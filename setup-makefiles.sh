@@ -48,37 +48,18 @@ write_makefiles "${MY_DIR}/proprietary-files.txt" true
 OUTDIR=vendor/$VENDOR/$DEVICE_COMMON
 (cat << EOF) >> $LINEAGE_ROOT/$OUTDIR/Android.mk
 include \$(CLEAR_VARS)
-LOCAL_MODULE := libGLES_mali
-LOCAL_MODULE_OWNER := samsung
-LOCAL_SRC_FILES := proprietary/vendor/lib/egl/libGLES_mali.so
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := SHARED_LIBRARIES
-LOCAL_MODULE_SUFFIX := .so
-LOCAL_MODULE_PATH := \$(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/egl
 
-SYMLINKS := \$(TARGET_OUT)/vendor
-\$(SYMLINKS):
-	@echo "Symlink: vulkan.exynos5.so"
-	@mkdir -p \$@/lib/hw
-	\$(hide) ln -sf ../egl/libGLES_mali.so \$@/lib/hw/vulkan.exynos5.so
-	@echo "Symlink: libOpenCL.so"
-	\$(hide) ln -sf egl/libGLES_mali.so \$@/lib/libOpenCL.so
-	@echo "Symlink: libOpenCL.so.1"
-	\$(hide) ln -sf egl/libGLES_mali.so \$@/lib/libOpenCL.so.1
-	@echo "Symlink: libOpenCL.so.1.1"
-	\$(hide) ln -sf egl/libGLES_mali.so \$@/lib/libOpenCL.so.1.1
+EGL_LIBS := libGLES_mali.so libOpenCL.so libOpenCL.so.1 libOpenCL.so.1.1 vulkan.exynos5.so
 
-ALL_MODULES.\$(LOCAL_MODULE).INSTALLED := \\
-	\$(ALL_MODULES.\$(LOCAL_MODULE).INSTALLED) \$(SYMLINKS)
+EGL_SYMLINKS := \$(addprefix \$(TARGET_OUT_VENDOR)/lib/,\$(EGL_LIBS))
+\$(EGL_SYMLINKS): \$(LOCAL_INSTALLED_MODULE)
+	@echo "Symlink: EGL lib: \$@"
+	@mkdir -p \$(dir \$@)
+	@rm -rf \$@
+	\$(hide) ln -sf /vendor/lib/egl/libGLES_mali.so \$@
 
-include \$(BUILD_PREBUILT)
+ALL_DEFAULT_INSTALLED_MODULES += \$(EGL_SYMLINKS)
 
-EOF
-
-(cat << EOF) >> $LINEAGE_ROOT/$OUTDIR/$DEVICE_COMMON-vendor.mk
-
-# Create Mali links for Vulkan and OpenCL
-PRODUCT_PACKAGES += libGLES_mali
 EOF
 ###################################################################################################
 # CUSTOM PART END                                                                                 #
