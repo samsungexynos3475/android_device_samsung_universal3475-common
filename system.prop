@@ -1,6 +1,7 @@
 # ADB
 ro.adb.nonblocking_ffs=0
 persist.adb.nonblocking_ffs=0
+sys.usb.ffs.aio_compat=1
 
 # Boot device
 ro.boot.bootdevice=13540000.dwmmc0
