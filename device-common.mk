@@ -62,11 +62,6 @@ PRODUCT_PACKAGES += \
     camera.universal3475 \
     Snap
 
-# Configstore
-PRODUCT_PACKAGES += \
-    android.hardware.configstore@1.0-impl \
-    android.hardware.configstore@1.0-service
-
 # Control groups and task profiles
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/cgroup/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
