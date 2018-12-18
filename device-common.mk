@@ -62,11 +62,6 @@ PRODUCT_PACKAGES += \
     camera.universal3475 \
     Snap
 
-# Configstore
-PRODUCT_PACKAGES += \
-    android.hardware.configstore@1.0-impl \
-    android.hardware.configstore@1.0-service
-
 # Debug logcat
 ifeq ($(TARGET_BUILD_DEBUG),true)
     PRODUCT_COPY_FILES += \
