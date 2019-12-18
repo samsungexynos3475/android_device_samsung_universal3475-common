@@ -70,6 +70,10 @@ BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary
 # Replace libgui.so to libsensor.so
 patchelf --replace-needed libgui.so libsensor.so $BLOB_ROOT/vendor/bin/gpsd
 
+# Replace libprotobuf-cpp-full.so to libprotobuf-cpp-fl26.so
+patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-fl26.so $BLOB_ROOT/lib/libsec-ril.so
+patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-fl26.so $BLOB_ROOT/lib/libsec-ril-dsds.so
+
 # Replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/gpsd
 
