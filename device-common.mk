@@ -61,6 +61,10 @@ PRODUCT_PACKAGES += \
 	android.hardware.camera.provider@2.5-service \
 	camera.universal3475
 
+# ConfigStore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # Debug logcat
 ifeq ($(TARGET_BUILD_DEBUG),true)
     PRODUCT_COPY_FILES += \
