@@ -61,6 +61,10 @@ PRODUCT_PACKAGES += \
 	android.hardware.camera.provider@2.5-service \
 	camera.universal3475
 
+# ConfigStore
+PRODUCT_PACKAGES += \
+    disable_configstore
+
 # Control groups and task profiles
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/cgroup/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
