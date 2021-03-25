@@ -80,7 +80,7 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-	android.hardware.drm@1.3-service.clearkey
+	android.hardware.drm@1.4-service.clearkey
 
 # DTB
 PRODUCT_HOST_PACKAGES += \
