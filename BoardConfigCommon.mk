@@ -76,6 +76,9 @@ BOARD_HDMI_INCAPABLE := true
 # HWCServices - requires framework support
 #BOARD_USES_HWC_SERVICES := true
 
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
 # Kernel
 TARGET_KERNEL_ARCH := arm
 BOARD_KERNEL_BASE := 0x10000000
