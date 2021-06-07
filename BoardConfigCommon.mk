@@ -28,9 +28,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a7
 
-# Audio
-USE_XML_AUDIO_POLICY_CONF := 1
-
 # Backlight
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
