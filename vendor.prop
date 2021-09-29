@@ -19,6 +19,10 @@ ro.smps.enable=true
 ro.telephony.get_imsi_from_sim=true
 telephony.lteOnCdmaDevice=0
 
+# SoC
+ro.soc.manufacturer=Samsung
+ro.soc.model=Exynos 3475
+
 # SLSI
 debug.slsi_platform=1
 
