@@ -65,6 +65,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     disable_configstore
 
+# Control groups and task profiles
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/cgroup/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
+    $(COMMON_PATH)/configs/cgroup/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
+
 # Debug logcat
 ifeq ($(TARGET_BUILD_DEBUG),true)
     PRODUCT_COPY_FILES += \

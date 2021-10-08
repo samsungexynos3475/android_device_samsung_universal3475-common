@@ -1,0 +1,41 @@
+{
+  "Attributes": [],
+  "Profiles": [
+    {
+      "Name": "HighEnergySaving",
+      "Actions": []
+    },
+    {
+      "Name": "NormalPerformance",
+      "Actions": []
+    },
+    {
+      "Name": "HighPerformance",
+      "Actions": []
+    },
+    {
+      "Name": "MaxPerformance",
+      "Actions": []
+    },
+    {
+      "Name": "RealtimePerformance",
+      "Actions": []
+    },
+    {
+      "Name": "CameraServicePerformance",
+      "Actions": []
+    },
+    {
+      "Name": "NNApiHALPerformance",
+      "Actions": []
+    },
+    {
+      "Name": "CpuPolicySpread",
+      "Actions": []
+    },
+    {
+      "Name": "CpuPolicyPack",
+      "Actions": []
+    }
+  ]
+}
