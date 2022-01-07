@@ -61,3 +61,6 @@ dontaudit gpsd default_prop:file r_file_perms;
 # Allow gpsd to execute shell and toolbox
 allow gpsd shell_exec:file rx_file_perms;
 allow gpsd toolbox_exec:file rx_file_perms;
+
+# Silence gpsd to access /data/data
+dontaudit gpsd system_data_file:dir search;
