@@ -51,6 +51,9 @@ ifeq ($(HOST_OS),linux)
     endif
 endif
 
+# ELF
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 # File System
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
