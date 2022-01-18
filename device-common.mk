@@ -38,6 +38,11 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(COMMON_PATH)/configs/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
 
+# ADB
+PRODUCT_PRODUCT_PROPERTIES := \
+	persist.adb.nonblocking_ffs=0 \
+	ro.adb.nonblocking_ffs=0
+
 # APN configs (from N975FXXS9HWHA)
 PRODUCT_COPY_FILES += \
 	$(COMMON_PATH)/configs/ril/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
