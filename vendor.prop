@@ -1,7 +1,7 @@
 # Audio
 af.fast_track_multiplier=1
-audio_hal.disable_two_mic=true
-audio_hal.force_voice_config=wide
+ro.vendor.audio_hal.disable_two_mic=true
+ro.vendor.audio_hal.force_voice_config=wide
 
 # Board
 ro.chipname=exynos3475
