@@ -169,6 +169,9 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
+# Partitions
+$(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.samsung-libperfmgr
