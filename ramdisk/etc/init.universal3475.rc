@@ -59,6 +59,9 @@ on post-fs-data
     mkdir /data/firmware 0770 audioserver system
     chown audioserver system /data/firmware
 
+# GnssConfiguration doesn't actually look at gps.conf, just the debug file
+    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
+
 on boot
     # Allow to access debugfs
     chmod 755 /sys/kernel/debug
@@ -276,9 +279,6 @@ on fs
 # Permissions for gpio_keys
     chown radio system /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys 116,172
-
-# GnssConfiguration doesn't actually look at gps.conf, just the debug file
-    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
 
  # create data/gps for GPS daemon
     chown root system /dev/ttySAC0
