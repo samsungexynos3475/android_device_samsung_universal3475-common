@@ -287,6 +287,7 @@ PRODUCT_SOONG_NAMESPACES += \
 	$(COMMON_PATH) \
     hardware/google/pixel \
 	hardware/google/interfaces \
+    hardware/samsung \
 	hardware/samsung/aidl/power-libperfmgr \
 	hardware/samsung_slsi-linaro/exynos/cpboot
 
