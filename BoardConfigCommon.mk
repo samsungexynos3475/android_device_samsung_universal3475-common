@@ -62,7 +62,9 @@ HWUI_COMPILE_FOR_PERF := true
 
 # Kernel
 TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
+    KBUILD_BUILD_USER=$(BUILD_USERNAME) KBUILD_BUILD_HOST=$(BUILD_HOSTNAME)
 BOARD_KERNEL_BASE := 0x10000000
 # BOARD_KERNEL_CMDLINE := The bootloader ignores the cmdline from the boot.img
 BOARD_KERNEL_PAGESIZE := 2048
