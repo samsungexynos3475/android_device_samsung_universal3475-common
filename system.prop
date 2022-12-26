@@ -12,7 +12,9 @@ dalvik.vm.boot-dex2oat-threads=2
 dalvik.vm.image-dex2oat-threads=2
 
 # HWC
+debug.sf.disable_backpressure=1
 debug.sf.latch_unsignaled=1
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
 # HWUI
 ro.hwui.texture_cache_size=24
