@@ -8,6 +8,7 @@ ro.chipname=exynos3475
 ro.arch=exynos3475
 
 # Graphics
+ro.hardware.egl=mali
 ro.opengles.version=196610
 ro.vendor.winupdate=1
 
