@@ -147,11 +147,6 @@ vendor/etc/nxp/mVoIPSec/Tx_ControlParams_WIDEBAND_WIRED_HEADSET.txt
 vendor/lib/soundfx/libLifevibes_lvverx.so
 vendor/lib/soundfx/libLifevibes_lvvetx.so
 
-# Protobuf precompiled from https://gitlab.com/Exynos7580/android_external_protobuf-compat-2.6
-# its the android N protobuf library slightly modified to avoid colissions with the incompatible
-# protobuf of Oreo and up
-vendor/lib/libprotobuf-cpp-fl26.so|f2436050b38e5acb63d36ad7b24a0c2612d68749
-
 # RIL
 etc/plmn_delta.bin:vendor/etc/plmn_delta.bin
 etc/plmn_se13.bin:vendor/etc/plmn_se13.bin
@@ -162,12 +157,12 @@ lib/libsec-ril.so:vendor/lib/libsec-ril.so
 # Sensors
 lib/libfloatingfeature.so:vendor/lib/libfloatingfeature.so
 
-# Widevine
-lib/libstagefright_hdcp.so
-vendor/lib/liboemcrypto.so
-
-# Widevine - from angler (OPR6.170623.017)
-vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
+# Widevine DRM (L3) - from greatlte
+bin/move_widevine_data.sh
+vendor/bin/hw/android.hardware.drm@1.1-service.widevine
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+vendor/lib/libwvhidl.so
+vendor/lib/mediadrm/libwvdrmengine.so
 
 # Wi-Fi
 vendor/etc/wifi/bcmdhd_apsta.bin

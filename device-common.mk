@@ -105,6 +105,11 @@ PRODUCT_PACKAGES += \
 	android.hardware.health@2.1-impl.recovery \
 	android.hardware.health@2.1-service
 
+# HIDL
+PRODUCT_PACKAGES += \
+	libhidltransport \
+	libhwbinder
+
 # Keylayout
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/keylayout/gpio_keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio_keys.kl \
@@ -297,6 +302,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
+
+# VNDK prebuilts for Widevine L3
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-lite.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-lite-v29.so
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
