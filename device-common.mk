@@ -119,6 +119,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light-service.samsung
 
+# Lineage Health
+PRODUCT_PACKAGES += \
+	vendor.lineage.health-service.default
+
 # LiveDisplay
 ifeq ($(TARGET_HAVE_MDNIE),true)
     # mDNIe
