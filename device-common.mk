@@ -119,6 +119,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light-service.samsung
 
+# Lineage Health
+PRODUCT_PACKAGES += \
+	vendor.lineage.health-service.default
+
 # LiveDisplay
 ifneq ($(filter j2lte j3xlte on5lte on5ltetmo, $(subst lineage_,,$(TARGET_PRODUCT))),)
     # Software-based SurfaceFlinger
