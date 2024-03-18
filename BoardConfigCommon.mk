@@ -134,6 +134,9 @@ BOARD_VENDOR := samsung
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/ramdisk/etc/fstab.universal3475
 
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
+
 # RIL
 BOARD_MODEM_TYPE := tss310
 BOARD_PROVIDES_LIBRIL := true

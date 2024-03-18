@@ -210,6 +210,11 @@ PRODUCT_PACKAGES += \
     init.wifi.rc \
     ueventd.universal3475.rc
 
+# Filesystem tools
+PRODUCT_PACKAGES += \
+	e2fsck_static \
+	resize2fs_static
+
 # RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
