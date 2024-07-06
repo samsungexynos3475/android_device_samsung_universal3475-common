@@ -1,3 +1,6 @@
+# Boot device
+ro.boot.bootdevice=13540000.dwmmc0
+
 # Dalvik/Art
 dalvik.vm.heapstartsize=8m
 dalvik.vm.heaptargetutilization=0.75
