@@ -13,9 +13,6 @@ lib/libhwjpeg.so:vendor/lib/libhwjpeg.so
 # Cutils
 lib/libcutils_symbol.so:vendor/lib/libcutils_symbol.so
 
-# CPboot Daemon
-vendor/bin/cbd
-
 # Firmware
 vendor/firmware/es305_fw.bin
 vendor/firmware/mfc_fw.bin
