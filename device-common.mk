@@ -179,6 +179,7 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
+	cbd \
     libprotobuf-cpp-full \
     libsecril-client \
     modemloader \
@@ -262,7 +263,9 @@ PRODUCT_PACKAGES += \
     libstagefright_shim
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
+PRODUCT_SOONG_NAMESPACES += \
+	$(COMMON_PATH) \
+	hardware/samsung_slsi-linaro/exynos/cpboot
 
 # TextClassifier
 PRODUCT_PACKAGES += \
