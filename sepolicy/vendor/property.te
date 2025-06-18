@@ -6,3 +6,6 @@ type modemloader_prop, property_type;
 
 # mobicore (tee)
 type tee_prop, property_type;
+
+# batterylifeextender
+type vendor_batterylifeextender_prop, property_type;
