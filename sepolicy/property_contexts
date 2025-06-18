@@ -17,3 +17,6 @@ sys.mobicoredaemon.enable         u:object_r:tee_prop:s0
 
 # radio
 persist.ril.                u:object_r:radio_prop:s0
+
+# batterylifeextender
+persist.vendor.sec.battlifeext_enabled     u:object_r:vendor_batterylifeextender_prop:s0

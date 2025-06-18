@@ -127,7 +127,7 @@ on boot
     chown system radio /sys/class/power_supply/battery/update
     chown system radio /sys/class/power_supply/battery/factory_mode_relieve
     chown system radio /sys/class/power_supply/battery/factory_mode_bypass
-    chown media sdcard_rw /sys/class/power_supply/battery/store_mode
+    chown system system /sys/class/power_supply/battery/store_mode
     chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/call
     chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/video
     chown sdcard_rw sdcard_rw /sys/class/power_supply/battery/music
