@@ -96,6 +96,10 @@ on boot
 
     chown system system /sys/class/timed_output/vibrator/intensity
 
+    # Charging enable
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0664 /sys/class/power_supply/battery/charging_enabled
+
     #permission for TSP, Touchkey and Wacom
     chmod 0660 /sys/class/sec/tsp/input/enabled
 
@@ -246,3 +250,7 @@ on boot
     mkdir /dev/bus/usb 0755 root root
 
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
+
+on property:sys.boot_completed=1
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0664 /sys/class/power_supply/battery/charging_enabled
