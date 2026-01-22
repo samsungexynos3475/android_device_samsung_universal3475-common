@@ -192,6 +192,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fstab.universal3475 \
     init.baseband.rc \
+    init.mobicore.rc \
     init.power.rc \
     init.recovery.universal3475.rc \
     init.samsung.rc \
