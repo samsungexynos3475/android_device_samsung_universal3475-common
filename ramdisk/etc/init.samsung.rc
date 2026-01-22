@@ -59,11 +59,6 @@ on post-fs-data
     restorecon /dev/icd
     restorecon /dev/icdr
 
-    # mobicore
-    mkdir /data/app/mcRegistry 0775 system system
-    mkdir /data/app/mcRegistry/TbStorage 0700 system system
-    mkdir /efs/TEE  0770 radio system
-
     # MTP permission
     chmod 0660 /dev/usb_mtp_gadget
     chown system mtp /dev/usb_mtp_gadget
@@ -98,13 +93,6 @@ on boot
     chmod 0664 /sys/power/cpufreq_min_limit
     chown radio system /sys/power/cpufreq_max_limit
     chmod 0664 /sys/power/cpufreq_max_limit
-
-    # mobicore
-    chmod 0660 /dev/s5p-smem
-    chown media system /dev/s5p-smem
-    chmod 0660 /dev/t-base-tui
-    chown system system /dev/t-base-tui
-    export MC_AUTH_TOKEN_PATH /efs
 
     chown system system /sys/class/timed_output/vibrator/intensity
 
@@ -258,10 +246,3 @@ on boot
     mkdir /dev/bus/usb 0755 root root
 
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
-
-# MobiCore startup
-service mobicore /vendor/bin/mcDriverDaemon -r /vendor/app/FFFFFFFF000000000000000000000001.drbin -r /vendor/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin -r /vendor/app/mcRegistry/ffffffffd00000000000000000000016.tlbin
-    class core
-    user system
-    group system
-    oneshot
