@@ -2,3 +2,9 @@ allow netd self:capability sys_module;
 allow netd gpsd:fd use;
 allow netd gpsd:udp_socket rw_socket_perms;
 allow netd gpsd:tcp_socket rw_socket_perms;
+
+allow netd mediaserver_exec:file r_file_perms;
+
+# netd needs cgroup access for /dev/stune
+allow netd cgroup:file { open read write getattr };
+allow netd cgroup:dir { search open read };

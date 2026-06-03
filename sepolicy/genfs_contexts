@@ -19,6 +19,7 @@ genfscon proc /sec_log          u:object_r:proc_sec:s0
 
 # Power supply devices
 genfscon sysfs /devices/battery.20/power_supply                                     u:object_r:sysfs_usb_supply:s0
+genfscon sysfs /devices/battery.32/power_supply                                     u:object_r:sysfs_usb_supply:s0
 genfscon sysfs /devices/i2c.26/i2c-8/8-0034/s2mu003-charger/power_supply            u:object_r:sysfs_usb_supply:s0
 genfscon sysfs /devices/13890000.hsi2c/i2c-2/2-0035/power_supply                    u:object_r:sysfs_usb_supply:s0
 genfscon sysfs /devices/platform/htc_battery/power_supply/ps                        u:object_r:sysfs_usb_supply:s0

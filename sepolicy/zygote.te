@@ -1,1 +1,6 @@
 dontaudit zygote proc_cmdline:file r_file_perms;
+
+# Allow zygote to write to /dev/stune cgroup tasks
+allow zygote cgroup:file { open write };
+
+allow zygote mediaserver_exec:file r_file_perms;
