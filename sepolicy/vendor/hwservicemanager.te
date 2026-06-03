@@ -1,0 +1,2 @@
+# hwservicemanager needs to search gpsd proc dir
+allow hwservicemanager gpsd:dir search;
