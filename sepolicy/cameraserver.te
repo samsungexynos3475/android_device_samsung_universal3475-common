@@ -21,3 +21,6 @@ allow cameraserver video_device:chr_file rw_file_perms;
 
 # Allow cameraserver to access ion memory allocator
 allow cameraserver ion_device:chr_file rw_file_perms;
+
+# Allow cameraserver to access mediaserver
+allow cameraserver mediaserver_exec:file r_file_perms;

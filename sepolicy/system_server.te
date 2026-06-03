@@ -34,6 +34,9 @@ allow system_server sysfs_mdnie:file rw_file_perms;
 # memtrack HAL
 allow system_server debugfs:dir r_dir_perms;
 
+# Mali GPU debugfs (can't allow due to neverallow, suppress)
+dontaudit system_server debugfs:file r_file_perms;
+
 # sensor HAL
 allow system_server sensor_device:chr_file rw_file_perms;
 allow system_server baro_delta_factoryapp_efs_file:file r_file_perms;
@@ -55,3 +58,6 @@ allow system_server sysfs_input:file rw_file_perms;
 allow system_server proc_input_devices:file r_file_perms;
 
 unix_socket_connect(system_server, property, gpsd)
+
+# Allow system_server to access mediaserver
+allow system_server mediaserver_exec:file r_file_perms;
