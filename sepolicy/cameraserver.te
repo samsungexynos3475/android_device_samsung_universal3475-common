@@ -7,6 +7,17 @@ allow cameraserver sysfs_camera:file rw_file_perms;
 
 # /data/camera/ISP_CV
 allow cameraserver camera_data_file:file r_file_perms;
+allow cameraserver camera_data_file:dir r_dir_perms;
 
 # /data/media(/.*)?
 r_dir_file(cameraserver, media_rw_data_file);
+
+# Allow cameraserver to access firmware files (setfile_*, fimc_is_*)
+allow cameraserver vendor_file:dir r_dir_perms;
+allow cameraserver vendor_file:file r_file_perms;
+
+# Allow cameraserver to access video device nodes (/dev/video*)
+allow cameraserver video_device:chr_file rw_file_perms;
+
+# Allow cameraserver to access ion memory allocator
+allow cameraserver ion_device:chr_file rw_file_perms;

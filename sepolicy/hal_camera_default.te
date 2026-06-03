@@ -4,3 +4,17 @@ allow hal_camera_default sysfs_camera:file rw_file_perms;
 allow hal_camera_default hal_graphics_mapper_hwservice:hwservice_manager find;
 
 vndbinder_use(hal_camera_default)
+
+# Allow camera HAL to access firmware files for sensor initialization
+allow hal_camera_default vendor_file:dir r_dir_perms;
+allow hal_camera_default vendor_file:file r_file_perms;
+
+# Allow camera HAL to access camera data files (ISP calibration, etc.)
+allow hal_camera_default camera_data_file:dir rw_dir_perms;
+allow hal_camera_default camera_data_file:file create_file_perms;
+
+# Allow camera HAL to access video device nodes
+allow hal_camera_default video_device:chr_file rw_file_perms;
+
+# Allow camera HAL to access ion memory allocator
+allow hal_camera_default ion_device:chr_file rw_file_perms;

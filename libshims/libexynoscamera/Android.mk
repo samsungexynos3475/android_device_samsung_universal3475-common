@@ -16,11 +16,11 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := GraphicBuffer.cpp Fence.cpp
+LOCAL_SRC_FILES := GraphicBuffer.cpp Fence.cpp MemoryHeapBase.cpp
 
 LOCAL_C_INCLUDES := frameworks/native/include
 
-LOCAL_SHARED_LIBRARIES := libgui libui
+LOCAL_SHARED_LIBRARIES := libgui libui libbinder
 
 LOCAL_MODULE := libexynoscamera_shim
 LOCAL_MODULE_TAGS := optional

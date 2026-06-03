@@ -19,6 +19,11 @@
 
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
+#include <string.h>
+#include <unistd.h>
+#include <dirent.h>
+#include <errno.h>
+#include <fcntl.h>
 
 #include "CameraWrapper.h"
 #include "Camera2Wrapper.h"
@@ -101,7 +106,14 @@ static int camera_get_camera_info(int camera_id, struct camera_info *info)
     ALOGV("%s", __FUNCTION__);
     if (check_vendor_module())
         return 0;
-    return gVendorModule->get_camera_info(camera_id, info);
+    int ret = gVendorModule->get_camera_info(camera_id, info);
+    // Force HAL version to 1.0 - the old vendor HAL reports garbage version
+    info->device_version = CAMERA_DEVICE_API_VERSION_1_0;
+    // Set resource fields the old vendor HAL doesn't know about (API 2.2+)
+    info->resource_cost = 100;
+    info->conflicting_devices = NULL;
+    info->conflicting_devices_length = 0;
+    return ret;
 }
 
 static int camera_set_callbacks(const camera_module_callbacks_t *callbacks)
@@ -131,8 +143,31 @@ static int camera_open_legacy(const struct hw_module_t* module, const char* id, 
 
 static int camera_set_torch_mode(const char* camera_id, bool enabled)
 {
-    ALOGV("%s", __FUNCTION__);
-    if (check_vendor_module())
-        return 0;
-    return gVendorModule->set_torch_mode(camera_id, enabled);
+    ALOGV("%s: camera_id=%s enabled=%d", __FUNCTION__, camera_id, enabled);
+
+    // Only rear camera (0) has a flash LED
+    if (!camera_id || camera_id[0] != '0')
+        return -ENOSYS;
+
+    // Use sysfs to control the flash LED directly.
+    // This avoids opening the camera HAL which has race conditions
+    // in the vendor's autoFocusThread on close.
+    int fd = open("/sys/devices/virtual/camera/flash/rear_torch_flash",
+                  O_WRONLY);
+    if (fd < 0) {
+        ALOGE("%s: failed to open torch sysfs: %s", __FUNCTION__,
+              strerror(errno));
+        return -ENODEV;
+    }
+
+    int ret = write(fd, enabled ? "1" : "0", 1);
+    close(fd);
+
+    if (ret != 1) {
+        ALOGE("%s: failed to write torch sysfs", __FUNCTION__);
+        return -EIO;
+    }
+
+    ALOGV("%s: torch %s", __FUNCTION__, enabled ? "ON" : "OFF");
+    return 0;
 }
