@@ -1,0 +1,8 @@
+# wificond needs efs access for wifi mac
+allow wificond efs_file:dir search;
+
+allow wificond mediaserver_exec:file r_file_perms;
+
+# wificond needs wifi efs for mac address
+allow wificond wifi_efs_file:dir search;
+allow wificond wifi_efs_file:file r_file_perms;
