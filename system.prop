@@ -1,5 +1,6 @@
 # Audio
 af.fast_track_multiplier=1
+audio_hal.disable_two_mic=true
 audio_hal.force_voice_config=wide
 
 # Dalvik/Art
@@ -30,6 +31,8 @@ net.tcp.default_init_rwnd=60
 
 # OMX
 debug.stagefright.ccodec=0
+debug.stagefright.omx_default_rank=0
+debug.stagefright.omx_default_rank.sw-audio=1
 
 # Radio
 persist.data.netmgrd.qos.enable=false
@@ -43,6 +46,9 @@ ro.smps.enable=true
 ro.telephony.get_imsi_from_sim=true
 ro.use_data_netmgrd=false
 telephony.lteOnCdmaDevice=0
+
+# SLSI
+debug.slsi_platform=1
 
 # Wifi
 wifi.interface=wlan0
