@@ -51,3 +51,5 @@ allow gpsd node:tcp_socket node_bind;
 # hwservicemanager ready prop
 allow gpsd hwservicemanager:binder call;
 allow gpsd hwservicemanager_prop:file { open read getattr};
+
+r_dir_file(hwservicemanager, gpsd)

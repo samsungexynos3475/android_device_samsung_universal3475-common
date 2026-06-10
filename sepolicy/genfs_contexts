@@ -30,6 +30,7 @@ genfscon sysfs /devices/virtual/sec/sec_key                                 u:ob
 genfscon sysfs /devices/virtual/sec/tsp                                     u:object_r:sysfs_input:s0
 genfscon sysfs /devices/virtual/secgpio_check                               u:object_r:sysfs_input:s0
 genfscon sysfs /devices/virtual/input                                       u:object_r:sysfs_input:s0
+genfscon sysfs /devices/13880000.hsi2c/i2c-1/1-0020/input                   u:object_r:sysfs_input:s0
 
 # A3 power devices
 genfscon sysfs /devices/i2c.21/i2c-4/4-0035/power_supply                            u:object_r:sysfs_usb_supply:s0
@@ -127,3 +128,8 @@ genfscon sysfs /devices/14800000.dsim      u:object_r:sysfs_graphics:s0
 
 # video4linux
 genfscon sysfs /devices/12800000.mfc0/video4linux   u:object_r:sysfs_v4l:s0
+genfscon sysfs /devices/12c30000.mfc0/video4linux   u:object_r:sysfs_v4l:s0
+genfscon sysfs /devices/14400000.fimc_is/video4linux u:object_r:sysfs_v4l:s0
+genfscon sysfs /devices/fimc_is_sensor.2/video4linux u:object_r:sysfs_v4l:s0
+genfscon sysfs /devices/fimc_is_sensor.3/video4linux u:object_r:sysfs_v4l:s0
+genfscon sysfs /devices/mdev_output.6/video4linux u:object_r:sysfs_v4l:s0
