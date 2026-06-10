@@ -65,3 +65,6 @@ allow rild sec_efs_file:file r_file_perms;
 # Allow rild to set net.rmnet/net.gprs DNS properties and radio properties
 set_prop(rild, net_radio_prop)
 set_prop(rild, radio_prop)
+
+# Allow rilld to read system files
+allow rild system_data_file:file { open read };

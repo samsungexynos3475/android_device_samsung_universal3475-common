@@ -96,3 +96,6 @@ allow init proc_sec:file { rw_file_perms setattr };
 
 # Sockets
 allow init socket_device:sock_file { read write getattr setattr create unlink };
+
+allow init kernel:security check_context;
+allow init seapp_contexts_file:file { getattr open read };
