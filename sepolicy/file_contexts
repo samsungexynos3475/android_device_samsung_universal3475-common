@@ -23,7 +23,8 @@
 /dev/mipi-lli/lli_control    u:object_r:mif_device:s0
 
 /dev/gnss_ipc                u:object_r:gps_device:s0
-/dev/ttySAC[0-1]*            u:object_r:gps_device:s0
+/dev/ttySAC0                 u:object_r:gps_device:s0
+/dev/ttySAC1                 u:object_r:bluetooth_device:s0
 
 /dev/block/vnswap0           u:object_r:sswap_device:s0
 
