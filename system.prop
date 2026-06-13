@@ -17,12 +17,6 @@ ro.opengles.version=196610
 # HWC
 debug.sf.latch_unsignaled=1
 
-# Enable ADB Debugging By Default & Disable USB Debugging Popup
-persist.adb.notify=0
-persist.service.adb.enable=1
-persist.service.debuggable=1
-persist.sys.usb.config=mtp,adb
-
 # Network
 net.tcp.default_init_rwnd=60
 
@@ -46,6 +40,9 @@ telephony.lteOnCdmaDevice=0
 
 # SLSI
 debug.slsi_platform=1
+
+# USB
+persist.sys.usb.config=mtp
 
 # Wifi
 wifi.interface=wlan0
