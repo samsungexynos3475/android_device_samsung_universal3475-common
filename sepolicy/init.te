@@ -40,7 +40,7 @@ allow init sysfs_camera:file { relabelto setattr };
 allow init sysfs_camera:filesystem associate;
 
 # WiFi firmware permissions
-allow init sysfs_wifi:file setattr;
+allow init sysfs_wifi:file { w_file_perms setattr };
 
 # Input devices
 allow init sysfs_input:file { rw_file_perms setattr };
