@@ -42,6 +42,18 @@ on post-fs-data
     # Set permissions for firmware path control
     chown wifi wifi /sys/module/dhd/parameters/firmware_path
 
+# Ensure firmware path is reset to STA mode when wificond starts (Normal Wi-Fi)
+on property:init.svc.wificond=running
+    write /sys/module/dhd/parameters/firmware_path /vendor/etc/wifi/bcmdhd_sta.bin
+
+# Ensure firmware path is switched to AP mode when hostapd starts (Hotspot)
+on property:init.svc.hostapd=running
+    write /sys/module/dhd/parameters/firmware_path /vendor/etc/wifi/bcmdhd_apsta.bin
+
+# Ensure firmware path is reset to STA mode when hostapd stops
+on property:init.svc.hostapd=stopped
+    write /sys/module/dhd/parameters/firmware_path /vendor/etc/wifi/bcmdhd_sta.bin
+
 on boot
     setprop wifi.interface wlan0
 
