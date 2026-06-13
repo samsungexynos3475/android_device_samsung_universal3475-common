@@ -8,6 +8,13 @@ import init.target.rc
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
 
+    # ZRAM setup
+    write /proc/sys/vm/dirty_expire_centisecs 200
+    write /proc/sys/vm/dirty_writeback_centisecs 500
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 40
+    write /proc/sys/vm/vfs_cache_pressure 50
+
 on init
     # RIL <-> audioserver comm
     chmod 0644 /proc/cmdline
@@ -815,3 +822,7 @@ service sswap /vendor/bin/sswap -s -f 1024
       user root
       group root
       oneshot
+
+on property:sys.boot_completed=1
+    # Enable swap
+    swapon_all /fstab.universal3475
