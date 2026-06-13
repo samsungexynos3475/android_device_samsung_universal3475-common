@@ -19,15 +19,6 @@ COMMON_PATH := device/samsung/universal3475-common
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
-# ADB Insecure
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.secure=0 \
-    ro.adb.secure=0 \
-    ro.debuggable=1 \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    persist.sys.usb.config=mtp,adb
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
