@@ -89,6 +89,7 @@
 # data files
 /data/nfc(/.*)?              u:object_r:nfc_data_file:s0
 /data/\.cid\.info                  u:object_r:wifi_data_file:s0
+/data/\.rev                        u:object_r:wifi_data_file:s0
 /data/data/data_usage_rx     u:object_r:radio_data_file:s0
 /data/data/data_usage_tx     u:object_r:radio_data_file:s0
 /data/misc/conn/\.wifiver\.info    u:object_r:wifi_data_file:s0
