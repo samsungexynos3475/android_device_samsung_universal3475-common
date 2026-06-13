@@ -26,6 +26,10 @@ on post-fs-data
     chmod 0666 /data/.wifiver.info
 
     # for WIFI Cert
+    write /data/.cid.info 0
+    write /data/.rev 0
+    restorecon /data/.cid.info
+    restorecon /data/.rev
     chmod 0664 /data/.bustxglom.info
     chmod 0664 /data/.roamoff.info
     chmod 0664 /data/.frameburst.info
