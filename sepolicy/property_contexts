@@ -14,6 +14,3 @@ sys.mobicoredaemon.enable         u:object_r:tee_prop:s0
 
 # radio
 persist.ril.                u:object_r:radio_prop:s0
-
-# sswap
-persist.sys.swapoff     u:object_r:sswap_prop:s0

@@ -26,8 +26,6 @@
 /dev/ttySAC0                 u:object_r:gps_device:s0
 /dev/ttySAC1                 u:object_r:bluetooth_device:s0
 
-/dev/block/vnswap0           u:object_r:sswap_device:s0
-
 /dev/block/mmcblk0p[0-9]*    u:object_r:emmcblk_device:s0
 
 /dev/block/mmcblk0p10        u:object_r:boot_block_device:s0
@@ -168,7 +166,6 @@
 
 /(vendor|system/vendor)/bin/cbd              u:object_r:cpboot-daemon_exec:s0
 /(vendor|system/vendor)/bin/gpsd             u:object_r:gpsd_exec:s0
-/(vendor|system/vendor)/bin/sswap            u:object_r:sswap_exec:s0
 
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service\.samsung-exynos    u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.samsung                 u:object_r:hal_lineage_touch_default_exec:s0
