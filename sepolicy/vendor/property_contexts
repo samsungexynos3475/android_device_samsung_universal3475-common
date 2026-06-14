@@ -20,6 +20,3 @@ persist.ril.                    u:object_r:radio_prop:s0
 rild.libargs                    u:object_r:vendor_radio_prop:s0
 ro.smps.enable                  u:object_r:vendor_radio_prop:s0
 ro.telephony.get_imsi_from_sim  u:object_r:telephony_config_prop:s0
-
-# sswap
-persist.sys.swapoff     u:object_r:sswap_prop:s0
