@@ -817,12 +817,6 @@ on charger
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor powersave
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor powersave
 
-service sswap /vendor/bin/sswap -s -f 1024
-      class core
-      user root
-      group root
-      oneshot
-
 on property:sys.boot_completed=1
     # Enable swap
     swapon_all /fstab.universal3475
