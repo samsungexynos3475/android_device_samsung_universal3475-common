@@ -35,7 +35,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # Binder
-#TARGET_USES_64_BIT_BINDER := true
+TARGET_USES_64_BIT_BINDER := true
 
 # Bluetooth
 BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
