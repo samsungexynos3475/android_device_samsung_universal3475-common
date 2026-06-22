@@ -332,8 +332,23 @@ typedef struct gralloc_module_t {
             int l, int t, int w, int h,
             struct android_ycbcr *ycbcr, int fenceFd);
 
+    /* getTransportSize(..., outNumFds, outNumInts)
+     * This function is mandatory on devices running IMapper2.1 or higher.
+     */
+    int32_t (*getTransportSize)(
+            struct gralloc_module_t const* module, buffer_handle_t handle, uint32_t *outNumFds,
+            uint32_t *outNumInts);
+
+    /* validateBufferSize(..., w, h, format, usage, stride)
+     * This function is mandatory on devices running IMapper2.1 or higher.
+     */
+    int32_t (*validateBufferSize)(
+            struct gralloc_module_t const* device, buffer_handle_t handle,
+            uint32_t w, uint32_t h, int32_t format, int usage,
+            uint32_t stride);
+
     /* reserved for future use */
-    void* reserved_proc[3];
+    void* reserved_proc[1];
 } gralloc_module_t;
 
 /*****************************************************************************/
