@@ -89,6 +89,10 @@ Return<void> BluetoothHci::initialize(
         if (!hidl_status.isOk()) {
           ALOGE("VendorInterface -> Unable to call scoDataReceived()");
         }
+      },
+      [cb](const hidl_vec<uint8_t>& packet) {
+        // ISO packets are not supported in Bluetooth HAL 1.0
+        (void)packet;
       });
   if (!rc) {
     auto hidl_status = cb->initializationComplete(Status::INITIALIZATION_ERROR);
