@@ -296,9 +296,6 @@ on boot
     mkdir /dev/bus 0755 root root
     mkdir /dev/bus/usb 0755 root root
 
-    write /sys/block/mmcblk0/queue/scheduler noop
-    write /sys/block/sda/queue/scheduler noop
-
     copy /system/etc/battery_charging_temp.data /sys/class/power_supply/battery/batt_temp_table
 
 # MobiCore startup
