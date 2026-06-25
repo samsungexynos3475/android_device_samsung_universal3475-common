@@ -68,3 +68,6 @@ set_prop(rild, radio_prop)
 
 # Allow rilld to read system files
 allow rild system_data_file:file { open read };
+
+# /dev/alarm
+allow rild alarm_device:chr_file rw_file_perms;

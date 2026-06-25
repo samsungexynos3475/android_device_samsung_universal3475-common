@@ -1,6 +1,9 @@
 # /dev/ttySAC3
 type bluetooth_device, dev_type;
 
+# /dev/alarm
+type alarm_device, dev_type;
+
 # /dev/block/mmcblk0p[0-9] (/dev/mbin0)
 type emmcblk_device, file_type;
 
