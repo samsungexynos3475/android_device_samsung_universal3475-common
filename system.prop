@@ -17,6 +17,10 @@ ro.opengles.version=196610
 # HWC
 debug.sf.latch_unsignaled=1
 
+# LMKD
+ro.lmk.use_minfree_levels=true
+ro.lmk.use_psi=false
+
 # Network
 net.tcp.default_init_rwnd=60
 
