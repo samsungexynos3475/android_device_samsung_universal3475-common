@@ -23,9 +23,6 @@ persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
 
-# Low RAM Flag
-ro.config.low_ram=true
-
 # Network
 net.tcp.default_init_rwnd=60
 
