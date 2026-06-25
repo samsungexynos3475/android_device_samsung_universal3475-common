@@ -250,10 +250,6 @@
             <name>IKeyDisabler</name>
             <instance>default</instance>
         </interface>
-        <interface>
-            <name>ITouchscreenGesture</name>
-            <instance>default</instance>
-        </interface>
     </hal>
     <hal format="hidl">
         <name>vendor.lineage.trust</name>
