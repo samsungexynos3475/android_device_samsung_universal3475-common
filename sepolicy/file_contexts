@@ -1,6 +1,8 @@
 ##########################
 # Devices
 #
+/dev/alarm                   u:object_r:alarm_device:s0
+
 /dev/mali[0-9]*              u:object_r:gpu_device:s0
 
 /dev/ttySAC3                 u:object_r:bluetooth_device:s0
