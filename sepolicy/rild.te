@@ -50,7 +50,7 @@ allow rild mnt_user_file:lnk_file r_file_perms;
 allow rild radio_block_device:blk_file r_file_perms;
 
 # persist.ril.modem.board
-set_prop(modemloader, radio_prop)
+set_prop(modemloader, vendor_radio_prop)
 
 # /dev/knox_kap
 allow rild knox_device:chr_file r_file_perms;
@@ -64,7 +64,7 @@ allow rild sec_efs_file:file r_file_perms;
 
 # Allow rild to set net.rmnet/net.gprs DNS properties and radio properties
 set_prop(rild, net_radio_prop)
-set_prop(rild, radio_prop)
+set_prop(rild, vendor_radio_prop)
 
 # Allow rilld to read system files
 allow rild system_data_file:file { open read };
