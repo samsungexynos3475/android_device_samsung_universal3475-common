@@ -118,7 +118,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.samsung
+    android.hardware.light-service.samsung
 
 # LiveDisplay
 ifeq ($(TARGET_HAVE_MDNIE),true)
