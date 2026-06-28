@@ -23,6 +23,7 @@ DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl \
     android.hardware.audio.effect@5.0-impl \
+    android.hardware.audio@2.0-service \
     audio.primary.universal3475 \
     audio.r_submix.default \
     audio.usb.default \
@@ -89,7 +90,8 @@ PRODUCT_HOST_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl
+    android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
@@ -154,7 +156,8 @@ endif
 
 # Memory
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service
 
 # Power
 PRODUCT_PACKAGES += \
@@ -259,7 +262,8 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service
 
 # Shims
 PRODUCT_PACKAGES += \
