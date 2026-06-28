@@ -118,7 +118,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.samsung
+    android.hardware.light-service.samsung
 
 # LiveDisplay
 ifneq ($(filter j2lte j3xlte on5lte on5ltetmo, $(subst lineage_,,$(TARGET_PRODUCT))),)
