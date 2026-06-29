@@ -14,13 +14,13 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/universal3475-common
+COMMON_PATH := device/samsung/universal3475-common
 BUILD_TOP := $(shell pwd)
 
 BUILD_BROKEN_DUP_RULES := true
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Firmware
 TARGET_NO_BOOTLOADER := true
@@ -57,7 +57,7 @@ BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 BOARD_ROOT_EXTRA_FOLDERS += efs cpefs
-TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 # Kernel
 TARGET_KERNEL_ARCH := arm
@@ -87,7 +87,7 @@ BOARD_USES_EXYNOS5_COMMON_GRALLOC := true
 #BOARD_USES_VR_FRONT_BUFFER := true
 
 # System prop
-TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 
 # Samsung OpenMAX Video
 BOARD_USE_STOREMETADATA := true
@@ -169,7 +169,7 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 BOARD_HAVE_SAMSUNG_WIFI          := true
 
 # Bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(LOCAL_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
@@ -178,14 +178,14 @@ BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/ramdisk/etc/fstab.universal3475
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/ramdisk/etc/fstab.universal3475
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/universal3475-common/sepolicy 
+BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy 
 BOARD_SEPOLICY_VERS := $(PLATFORM_SDK_VERSION).0
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
 
 # Shim
 TARGET_LD_SHIM_LIBS += \
