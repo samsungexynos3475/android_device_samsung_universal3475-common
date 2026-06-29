@@ -1,0 +1,14 @@
+cc_library_shared {
+    name: "libgpsd_shim",
+
+    srcs: [
+        "SensorManager.cpp"
+    ],
+
+    shared_libs: [
+        "libsensor",
+        "libutils",
+    ],
+
+    vendor: true,
+}
