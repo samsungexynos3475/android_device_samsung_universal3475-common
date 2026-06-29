@@ -86,6 +86,9 @@ BOARD_USES_EXYNOS5_COMMON_GRALLOC := true
 # VR Front buffer
 #BOARD_USES_VR_FRONT_BUFFER := true
 
+# System prop
+TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
+
 # Samsung OpenMAX Video
 BOARD_USE_STOREMETADATA := true
 BOARD_USE_METADATABUFFERTYPE := true
