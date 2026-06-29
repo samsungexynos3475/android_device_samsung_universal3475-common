@@ -6,7 +6,3 @@ on boot
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "75 1200000:85 1500000:95"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "19000 1300000:39000"
-
-# Kernel Workqueue
-    chown system system /sys/module/workqueue/parameters/power_efficient
-    chmod 0664 /sys/module/workqueue/parameters/power_efficient
