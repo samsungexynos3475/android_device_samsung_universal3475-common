@@ -164,6 +164,9 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
 SELINUX_IGNORE_NEVERALLOWS := true
 
+# Vendor security patch level (from G550FYXXU1CRF1)
+VENDOR_SECURITY_PATCH := 2018-04-01
+
 # Vendor separation
 TARGET_COPY_OUT_VENDOR := system/vendor
 
