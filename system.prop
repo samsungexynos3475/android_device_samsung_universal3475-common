@@ -47,4 +47,4 @@ debug.stagefright.omx_default_rank.sw-audio=1
 ro.config.small_battery=true
 
 # USB
-persist.sys.usb.config=mtp
+persist.sys.usb.config=mtp,adb
