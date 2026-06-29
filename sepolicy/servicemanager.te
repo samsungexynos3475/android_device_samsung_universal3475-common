@@ -1,0 +1,3 @@
+allow servicemanager halserverdomain:dir search;
+allow servicemanager halserverdomain:file { read open };
+allow servicemanager halserverdomain:process getattr;
