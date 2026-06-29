@@ -265,6 +265,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcamera_client_shim \
     libexynoscamera_shim \
+    libgpsd_shim \
     libstagefright_shim \
     libwrappergps_shim
 
