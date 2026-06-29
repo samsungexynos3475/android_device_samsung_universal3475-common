@@ -3,9 +3,6 @@
 #
 /dev/mali[0-9]*              u:object_r:gpu_device:s0
 
-/dev/bcm2079x                u:object_r:nfc_device:s0
-/dev/sec-nfc                 u:object_r:nfc_device:s0
-
 /dev/ttySAC3                 u:object_r:bluetooth_device:s0
 
 /dev/s5p-smem                u:object_r:secmem_device:s0
@@ -46,9 +43,6 @@
 /dev/bbd_sio                 u:object_r:bbd_device:s0
 /dev/ttyBCM[0-9]*            u:object_r:bbd_device:s0
 
-/dev/esfp0                   u:object_r:fingerprint_device:s0
-/dev/vfsspi                  u:object_r:fingerprint_device:s0
-
 /dev/batch_io                u:object_r:sensor_device:s0
 /dev/ssp_sensorhub           u:object_r:sensor_device:s0
 
@@ -88,7 +82,6 @@
 
 ####################################
 # data files
-/data/nfc(/.*)?              u:object_r:nfc_data_file:s0
 /data/\.cid\.info                  u:object_r:wifi_data_file:s0
 /data/\.rev                        u:object_r:wifi_data_file:s0
 /data/data/data_usage_rx     u:object_r:radio_data_file:s0
@@ -102,8 +95,6 @@
 /data/gps/ctrlpipe                                   u:object_r:gps_data_file:s0
 /data/gps/\.gpslogd\.pipe                            u:object_r:gps_data_file:s0
 /data/gps/nmeapipe                                   u:object_r:gps_data_file:s0
-
-/data/biometrics(/.*)?       u:object_r:fingerprintd_data_file:s0
 
 # camera
 /data/camera/ISP_CV          u:object_r:camera_data_file:s0
@@ -171,7 +162,6 @@
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.samsung                 u:object_r:hal_lineage_touch_default_exec:s0
 
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.samsung               u:object_r:hal_light_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.samsung u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.0-service\.exynos                u:object_r:hal_power_default_exec:s0
 
 # Stune cgroup
