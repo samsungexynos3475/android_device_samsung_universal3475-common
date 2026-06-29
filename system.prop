@@ -1,0 +1,28 @@
+# Audio
+af.fast_track_multiplier=1
+audio_hal.force_voice_config=wide
+
+# Graphics
+ro.opengles.version=196610
+
+# HWC
+debug.sf.latch_unsignaled=1
+
+# Enable ADB Debugging By Default & Disable USB Debugging Popup
+persist.adb.notify=0
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
+
+# Low RAM Flag
+ro.config.low_ram=true
+
+# Network
+net.tcp.default_init_rwnd=60
+
+# OMX
+debug.stagefright.ccodec=0
+
+# Wifi
+wifi.interface=wlan0
+wifi.direct.interface=p2p-dev-wlan0
