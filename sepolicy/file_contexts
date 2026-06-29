@@ -1,4 +1,9 @@
 ##########################
+# Root
+#
+/file_contexts.bin           u:object_r:file_contexts_file:s0
+
+##########################
 # Devices
 #
 /dev/alarm                   u:object_r:alarm_device:s0
