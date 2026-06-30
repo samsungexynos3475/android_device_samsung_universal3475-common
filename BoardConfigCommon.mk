@@ -22,21 +22,7 @@ BUILD_BROKEN_DUP_RULES := true
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
-# Firmware
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-
-# Platform
-TARGET_BOARD_PLATFORM := exynos5
-TARGET_SLSI_VARIANT := bsp
-TARGET_SOC := exynos3475
-TARGET_BOOTLOADER_BOARD_NAME := universal3475
-BOARD_VENDOR := samsung
-
-# Binder
-#TARGET_USES_64_BIT_BINDER := true
-
-# CPU
+# Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
@@ -46,51 +32,109 @@ TARGET_CPU_VARIANT := cortex-a7
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 
-# Extracted with libbootimg
-BOARD_CUSTOM_BOOTIMG := true
-BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-BOARD_KERNEL_BASE := 0x10000000
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_IMAGE_NAME := zImage
-#BOARD_KERNEL_CMDLINE := The bootloader ignores the cmdline from the boot.img
-BOARD_KERNEL_SEPARATED_DT := true
-TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
-BOARD_ROOT_EXTRA_FOLDERS += efs cpefs
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+# Backlight
+BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
-# Kernel
-TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
-TARGET_LINUX_KERNEL_VERSION := 3.10
+# Binder
+#TARGET_USES_64_BIT_BINDER := true
 
-# Kernel config
-TARGET_KERNEL_SOURCE := kernel/samsung/exynos3475
+# Bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
-# Manifest
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-
-# Use these flags if the board has a ext4 partition larger than 2gb
-BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-
-# Vendor separation
-TARGET_COPY_OUT_VENDOR := system/vendor
+# Boot animation
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # Device Tree
 BOARD_USES_DT := true
+
+# File System
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_HAS_NO_MISC_PARTITION:= false
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+
+# Firmware
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+# FIMG2D
+BOARD_USES_SKIA_FIMGAPI := true
+BOARD_USES_FIMGAPI_V5X := true
 
 # Graphics
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 BOARD_USES_EXYNOS5_COMMON_GRALLOC := true
 
-# VR Front buffer
-#BOARD_USES_VR_FRONT_BUFFER := true
+# HWComposer
+BOARD_USES_VPP := true
+#BOARD_USES_VPP_V2 := true // 8890 only
+BOARD_HDMI_INCAPABLE := true
 
-# System prop
-TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+# HWCServices - requires framework support
+#BOARD_USES_HWC_SERVICES := true
+
+# Kernel
+TARGET_KERNEL_ARCH := arm
+BOARD_KERNEL_BASE := 0x10000000
+# BOARD_KERNEL_CMDLINE := The bootloader ignores the cmdline from the boot.img
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+TARGET_KERNEL_SOURCE := kernel/samsung/universal3475
+TARGET_LINUX_KERNEL_VERSION := 3.10
+BOARD_KERNEL_IMAGE_NAME := zImage
+BOARD_CUSTOM_BOOTIMG := true
+BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
+BOARD_KERNEL_SEPARATED_DT := true
+TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+
+# Legacy BLOB Support
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += /system/vendor/bin/hw/rild=27
+
+# LIBHWJPEG
+TARGET_USES_UNIVERSAL_LIBHWJPEG := true
+
+# Macloader
+BOARD_HAVE_SAMSUNG_WIFI := true
+
+# Manifest
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+
+# Network Routing
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_BOOTIMAGE_PARTITION_SIZE := 13631488
+BOARD_CACHEIMAGE_PARTITION_SIZE := 202211328
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 15728640
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 4831838208
+BOARD_ROOT_EXTRA_FOLDERS += efs cpefs
+TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+
+# Platform
+TARGET_BOARD_PLATFORM := exynos5
+TARGET_SLSI_VARIANT := bsp
+TARGET_SOC := exynos3475
+TARGET_BOOTLOADER_BOARD_NAME := universal3475
+BOARD_VENDOR := samsung
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/ramdisk/etc/fstab.universal3475
+
+# RIL
+BOARD_MODEM_TYPE := tss310
+BOARD_PROVIDES_LIBRIL := true
+BOARD_NEEDS_ROAMING_PROTOCOL_FIELD := true
+
+# Samsung HALs
+TARGET_AUDIOHAL_VARIANT := samsung
+TARGET_POWERHAL_VARIANT := samsung
 
 # Samsung OpenMAX Video
 BOARD_USE_STOREMETADATA := true
@@ -115,41 +159,33 @@ BOARD_USE_CUSTOM_COMPONENT_SUPPORT := true
 BOARD_USE_VIDEO_EXT_FOR_WFD_HDCP := false
 BOARD_USE_SINGLE_PLANE_IN_DRM := false
 
-# HWComposer
-BOARD_USES_VPP := true
-#BOARD_USES_VPP_V2 := true // 8890 only
-BOARD_HDMI_INCAPABLE := true
-
 # Scalar
 BOARD_USES_SCALER := true
 
-# HWCServices - requires framework support
-#BOARD_USES_HWC_SERVICES := true
-
-# WiFiDisplay
-#BOARD_USES_VIRTUAL_DISPLAY := true - depends on platform changes
-BOARD_USES_VIRTUAL_DISPLAY_DECON_EXT_WB := false
-BOARD_USE_VIDEO_EXT_FOR_WFD_DRM := false
-BOARD_USES_VDS_BGRA8888 := true
-BOARD_VIRTUAL_DISPLAY_DISABLE_IDMA_G0 := false
-
-# LIBHWJPEG
-TARGET_USES_UNIVERSAL_LIBHWJPEG := true
-
-# FIMG2D
-BOARD_USES_SKIA_FIMGAPI := true
-BOARD_USES_FIMGAPI_V5X := true
-
-# SCALER
+# Scaler
 BOARD_USES_DEFAULT_CSC_HW_SCALER := true
 BOARD_USES_SCALER_M2M1SHOT := true
 
-# Samsung HALs
-TARGET_AUDIOHAL_VARIANT := samsung
-TARGET_POWERHAL_VARIANT := samsung
-
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
+
+# Shim
+TARGET_LD_SHIM_LIBS += \
+    /system/lib/libcamera_client.so|/vendor/lib/libcamera_client_shim.so \
+    /system/lib/libstagefright.so|/system/lib/libstagefright_shim.so \
+    /system/lib/libexynoscamera.so|/vendor/lib/libexynoscamera_shim.so
+
+# System prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+
+# SELinux
+BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy
+
+# Vendor separation
+TARGET_COPY_OUT_VENDOR := system/vendor
+
+# VR Front buffer
+#BOARD_USES_VR_FRONT_BUFFER := true
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -168,28 +204,9 @@ WIFI_DRIVER_NVRAM_PATH_PARAM:= "/sys/module/dhd/parameters/nvram_path"
 WIFI_DRIVER_NVRAM_PATH      := "/vendor/etc/wifi/nvram_net.txt"
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
-# MACLOADER
-BOARD_HAVE_SAMSUNG_WIFI          := true
-
-# Bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-
-# Backlight
-BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
-
-# Recovery
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/ramdisk/etc/fstab.universal3475
-
-# SELinux
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy 
-BOARD_SEPOLICY_VERS := $(PLATFORM_SDK_VERSION).0
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
-
-# Legacy BLOB Support
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/rild=27
+# WiFiDisplay
+#BOARD_USES_VIRTUAL_DISPLAY := true - depends on platform changes
+BOARD_USES_VIRTUAL_DISPLAY_DECON_EXT_WB := false
+BOARD_USE_VIDEO_EXT_FOR_WFD_DRM := false
+BOARD_USES_VDS_BGRA8888 := true
+BOARD_VIRTUAL_DISPLAY_DISABLE_IDMA_G0 := false

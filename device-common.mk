@@ -16,6 +16,7 @@
 
 COMMON_PATH := device/samsung/universal3475-common
 
+# Overlay
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
 # ADB Insecure
@@ -27,25 +28,37 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.service.debuggable=1 \
     persist.sys.usb.config=mtp,adb
 
+# Audio
+PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    audio.a2dp.default \
+    audio.primary.universal3475 \
+    audio.r_submix.default \
+    audio.usb.default \
+    tinymix
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_policy.conf \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
+    $(COMMON_PATH)/configs/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
     $(COMMON_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl.3475 \
+    android.hardware.bluetooth@1.0-service \
     libbt-vendor
 
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-legacy \
-    android.hardware.camera.provider@2.4-service
+    android.hardware.camera.provider@2.4-service \
+    camera.universal3475 \
+    Snap
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -57,7 +70,7 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
-# Flat device tree for boot image
+# DTB
 PRODUCT_HOST_PACKAGES += \
     dtbhtoolExynos
 
@@ -65,23 +78,19 @@ PRODUCT_HOST_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl
 
-# TV Input
-PRODUCT_PACKAGES += \
-    android.hardware.tv.input@1.0
-
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
     $(COMMON_PATH)/configs/gps/gps.xml:system/etc/gps.xml
 
 # Graphics
 PRODUCT_PACKAGES += \
-    libion \
-    libfimg \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl \
-    libhwc2on1adapter
+    libfimg \
+    libhwc2on1adapter \
+    libion
 
 # Health
 PRODUCT_PACKAGES += \
@@ -113,9 +122,9 @@ PRODUCT_PACKAGES += \
 
 # Mobicore
 PRODUCT_PACKAGES += \
-    mcDriverDaemon \
     libMcClient \
-    libMcRegistry
+    libMcRegistry \
+    mcDriverDaemon
 
 # Power
 PRODUCT_PACKAGES += \
@@ -123,23 +132,48 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml
+    frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
-# ramdisk
+# Radio
 PRODUCT_PACKAGES += \
-    init.power.rc \
+    libprotobuf-cpp-full \
+    libsecril-client \
+    modemloader \
+    libxml2 \
+    rild \
+    libril \
+    libreference-ril \
+    libsecril-client-sap \
+    android.hardware.radio@1.1 \
+    android.hardware.radio.deprecated@1.0
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.legacy.rc
+
+# Ramdisk
+PRODUCT_PACKAGES += \
     fstab.universal3475 \
     init.baseband.rc \
+    init.power.rc \
+    init.recovery.universal3475.rc \
     init.samsung.rc \
     init.universal3475.rc \
     init.universal3475.usb.rc \
-    init.recovery.universal3475.rc \
     init.wifi.rc \
     ueventd.universal3475.rc
 
@@ -157,25 +191,29 @@ PRODUCT_PACKAGES += \
 
 # Seccomp filters
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
-    $(COMMON_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+    $(COMMON_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    $(COMMON_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
+    android.hardware.sensors@1.0-impl
 
 # Shims
 PRODUCT_PACKAGES += \
     libcamera_client_shim \
     libexynoscamera_shim \
-    libstagefright_shim \
-    libui_shim
+    libstagefright_shim
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
 
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
+
+# Touch features
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.samsung
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -185,20 +223,29 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
+# Vendor security patch level (Vendor blobs from G550FYXXU1CRF1)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2018-04-01
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
+
 # Wi-Fi
 PRODUCT_PACKAGES += \
-    macloader \
-    wifiloader \
+    android.hardware.wifi@1.0 \
+    android.hardware.wifi@1.0-impl \
+    android.hardware.wifi@1.0-service \
     hostapd \
+    libwpa_client \
+    macloader \
     wificond \
+    wifiloader \
     wifilogd \
     wlutil \
-    libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    android.hardware.wifi@1.0-service \
-    android.hardware.wifi@1.0 \
-    android.hardware.wifi@1.0-impl
+    wpa_supplicant.conf
 
 # Wi-Fi Configs
 PRODUCT_COPY_FILES += \
