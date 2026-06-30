@@ -1,9 +1,8 @@
-import init.universal3475.usb.rc
-import init.baseband.rc
-import init.wifi.rc
-import init.samsung.rc
-import init.power.rc
-import init.target.rc
+import /vendor/etc/init/hw/init.universal3475.usb.rc
+import /vendor/etc/init/hw/init.baseband.rc
+import /vendor/etc/init/hw/init.wifi.rc
+import /vendor/etc/init/hw/init.samsung.rc
+import /vendor/etc/init/hw/init.power.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
@@ -230,7 +229,7 @@ on boot
     chmod 0775 /dev/socket
 
 on fs
-    mount_all /fstab.universal3475
+    mount_all /vendor/etc/fstab.universal3475
     setprop ro.crypto.fuse_sdcard true
 
 # Permissions for ION
@@ -816,4 +815,4 @@ on charger
 
 on property:sys.boot_completed=1
     # Enable swap
-    swapon_all /fstab.universal3475
+    swapon_all /vendor/etc/fstab.universal3475
