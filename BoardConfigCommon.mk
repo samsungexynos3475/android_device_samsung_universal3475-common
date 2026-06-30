@@ -153,7 +153,7 @@ TARGET_SYSTEM_PROP += $(COMMON_PATH)/system_go.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 # SELinux
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Vendor separation
