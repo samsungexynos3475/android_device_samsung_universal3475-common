@@ -62,14 +62,15 @@ fi
 # Initialize the helper
 setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true "${CLEAN_VENDOR}"
 
-extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
-        "${KANG}" --section "${SECTION}"
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 
 # Fix proprietary blobs
 BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary
+
+# Replace libgui.so to libsensor.so
 patchelf --replace-needed libgui.so libsensor.so $BLOB_ROOT/vendor/bin/gpsd
 
-# replace SSLv3_client_method with SSLv23_method
+# Replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/gpsd
 
 "${MY_DIR}/setup-makefiles.sh"

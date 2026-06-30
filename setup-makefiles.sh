@@ -20,8 +20,6 @@ set -e
 VENDOR=samsung
 DEVICE_COMMON=universal3475-common
 
-export INITIAL_COPYRIGHT_YEAR=2016
-
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
@@ -39,7 +37,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${LINEAGE_ROOT}" true
 
 # Copyright headers and guards
-write_headers "j1xlte"
+write_headers "j1xlte j2lte on5ltetmo"
 
 # The standard blobs
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
