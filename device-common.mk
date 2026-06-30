@@ -97,6 +97,11 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
     android.hardware.health@2.0-service
 
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/configs/keylayout/gpio_keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio_keys.kl \
+    $(COMMON_PATH)/configs/keylayout/sec_touchkey.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_touchkey.kl
+
 # Keymaster
 PRODUCT_PACKAGES += \
     keystore.exynos5 \
