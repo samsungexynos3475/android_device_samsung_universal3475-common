@@ -172,6 +172,7 @@ PRODUCT_PACKAGES += \
     init.power.rc \
     init.recovery.universal3475.rc \
     init.samsung.rc \
+    init.target.rc \
     init.universal3475.rc \
     init.universal3475.usb.rc \
     init.wifi.rc \
@@ -249,8 +250,10 @@ PRODUCT_PACKAGES += \
 
 # Wi-Fi Configs
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf
+    $(COMMON_PATH)/configs/wifi/cred.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/cred.conf \
+    $(COMMON_PATH)/configs/wifi/filter_ie:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/filter_ie \
+    $(COMMON_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
