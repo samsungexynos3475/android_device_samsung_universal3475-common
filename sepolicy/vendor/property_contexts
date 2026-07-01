@@ -11,6 +11,7 @@ ro.chipname                 u:object_r:vendor_default_prop:s0
 ro.arch                     u:object_r:vendor_default_prop:s0
 
 # cbd
+ril.cbd.                    u:object_r:vendor_radio_prop:s0
 vendor.cbd.                 u:object_r:cpboot-daemon_prop:s0
 
 # DRM HAL
@@ -23,6 +24,7 @@ ddk.set.afbc                u:object_r:graphics_config_prop:s0
 # modemloader
 hw.revision            u:object_r:modemloader_prop:s0
 ro.cbd.dt_revision     u:object_r:modemloader_prop:s0
+ril.cbd.boot_done      u:object_r:vendor_radio_prop:s0
 ril.cbd.dt_revision    u:object_r:modemloader_prop:s0
 ro.modemloader.done    u:object_r:modemloader_prop:s0
 
