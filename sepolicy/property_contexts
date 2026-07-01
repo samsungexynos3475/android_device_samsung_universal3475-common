@@ -16,6 +16,7 @@ ddk.set.afbc                u:object_r:graphics_config_prop:s0
 # modemloader
 hw.revision            u:object_r:modemloader_prop:s0
 ro.cbd.dt_revision     u:object_r:modemloader_prop:s0
+ril.cbd.boot_done      u:object_r:vendor_radio_prop:s0
 ril.cbd.dt_revision    u:object_r:modemloader_prop:s0
 ro.modemloader.done    u:object_r:modemloader_prop:s0
 
@@ -24,3 +25,4 @@ sys.mobicoredaemon.enable         u:object_r:tee_prop:s0
 
 # radio
 persist.ril.                u:object_r:vendor_radio_prop:s0
+ril.cbd.                    u:object_r:vendor_radio_prop:s0
