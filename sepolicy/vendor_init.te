@@ -1,0 +1,4 @@
+# Allow vendor_init to manage rild folders and symlinks at boot
+allow vendor_init system_data_file:dir { write add_name };
+allow vendor_init radio_data_file:lnk_file { create unlink rename };
+allow vendor_init radio_data_file:dir { create setattr search write add_name remove_name rmdir };
