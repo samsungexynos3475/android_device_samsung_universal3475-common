@@ -10,6 +10,9 @@ vendor.cbd.                 u:object_r:cpboot-daemon_prop:s0
 init.svc.vendor.drm-hal-1-0    u:object_r:exported_default_prop:s0
 init.svc.vendor.drm-hal-1-1    u:object_r:exported_default_prop:s0
 
+# frame buffer compression
+ddk.set.afbc                u:object_r:graphics_config_prop:s0
+
 # modemloader
 hw.revision            u:object_r:modemloader_prop:s0
 ro.cbd.dt_revision     u:object_r:modemloader_prop:s0
