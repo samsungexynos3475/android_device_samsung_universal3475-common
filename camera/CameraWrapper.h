@@ -19,4 +19,4 @@
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
 
-static android::Mutex gCameraWrapperLock;
+extern android::Mutex gCameraWrapperLock;
