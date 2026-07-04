@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <utils/Mutex.h>
 #include <utils/String8.h>
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
