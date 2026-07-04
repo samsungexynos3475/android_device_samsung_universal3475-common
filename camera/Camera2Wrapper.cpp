@@ -29,6 +29,9 @@
 #include "Camera2Wrapper.h"
 #include "CallbackWorkerThread.h"
 
+#include <map>
+#include <mutex>
+
 CallbackWorkerThread cbThread;
 
 static camera_request_memory gOriginalGetMemory = nullptr;
@@ -36,7 +39,22 @@ static camera_data_timestamp_callback gOriginalDataCbTimestamp = nullptr;
 static void* gCameraDeviceUser = nullptr;
 
 atomic_int BlockCbs = 0;
-static int gOriginalFds[16][2] = {{0}};
+
+struct MetadataMapping {
+    camera_memory_t* fw_mem;
+    void* vendor_opaque;
+};
+static std::mutex gMetadataMapLock;
+static std::map<void*, MetadataMapping> gMetadataMap;
+
+static void local_memory_release(struct camera_memory *mem) {
+    if (mem) {
+        if (mem->data) {
+            free(mem->data);
+        }
+        free(mem);
+    }
+}
 
 static camera_memory_t* WrappedGetMemory(int fd, size_t buf_size, unsigned int num_bufs, void *user) {
     // The vendor HAL passes its camera device as the memory callback cookie
@@ -47,6 +65,19 @@ static camera_memory_t* WrappedGetMemory(int fd, size_t buf_size, unsigned int n
         ALOGV("%s: replacing vendor cookie %p with framework cookie %p",
                 __FUNCTION__, user, actual_user);
     }
+    
+    // Intercept 20-byte video metadata buffers to decouple from framework
+    if (buf_size == 20) {
+        camera_memory_t* mem = (camera_memory_t*)malloc(sizeof(camera_memory_t));
+        if (mem) {
+            mem->data = malloc(buf_size * num_bufs);
+            mem->size = buf_size;
+            mem->handle = mem;
+            mem->release = local_memory_release;
+            return mem;
+        }
+    }
+    
     if (gOriginalGetMemory) {
         return gOriginalGetMemory(fd, buf_size, num_bufs, actual_user);
     }
@@ -58,32 +89,48 @@ static void WrappedDataCbTimestamp(int64_t timestamp, int32_t msg_type, const ca
         ALOGV("%s->BlockCbs == 1", __FUNCTION__);
         return;
     }
-    if (data && data->data) {
+    
+    void *actual_user = gCameraDeviceUser ? gCameraDeviceUser : user;
+    
+    if (data && data->size == 20 && data->data) {
         uint8_t *buffer = (uint8_t*)data->data + index * 20;
         uint32_t *array = (uint32_t*)buffer;
 
         int fd1 = array[1];
         int fd2 = array[2];
 
-        if (index < 16) {
-            gOriginalFds[index][0] = fd1;
-            gOriginalFds[index][1] = fd2;
+        // Allocate a strict 8-byte buffer from the framework
+        if (gOriginalGetMemory) {
+            camera_memory_t* fw_mem = gOriginalGetMemory(-1, 8, 1, actual_user);
+            if (fw_mem && fw_mem->data) {
+                native_handle_t* handle = native_handle_create(2, 1);
+                if (handle) {
+                    handle->data[0] = dup(fd1);
+                    handle->data[1] = dup(fd2);
+                    handle->data[2] = index; // backup index to use in release_recording_frame
 
-            native_handle_t* handle = native_handle_create(2, 1);
-            if (handle) {
-                handle->data[0] = dup(fd1);
-                handle->data[1] = dup(fd2);
-                handle->data[2] = index;
-
-                // Rewrite metadata buffer as VideoNativeHandleMetadata
-                array[0] = 3; // kMetadataBufferTypeNativeHandleSource
-                *(native_handle_t**)(&array[1]) = handle;
-                array[3] = 0;
-                array[4] = 0;
+                    uint32_t* fw_array = (uint32_t*)fw_mem->data;
+                    fw_array[0] = 3; // kMetadataBufferTypeNativeHandleSource
+                    *(native_handle_t**)(&fw_array[1]) = handle;
+                    
+                    // Map framework opaque to vendor opaque
+                    {
+                        std::lock_guard<std::mutex> lock(gMetadataMapLock);
+                        gMetadataMap[fw_mem->data] = {fw_mem, buffer};
+                    }
+                    
+                    // Pass the 8-byte standard buffer to the framework
+                    if (gOriginalDataCbTimestamp) {
+                        gOriginalDataCbTimestamp(timestamp, msg_type, fw_mem, 0, actual_user);
+                    }
+                    return; // Skip standard pass-through
+                } else {
+                    fw_mem->release(fw_mem);
+                }
             }
         }
     }
-    void *actual_user = gCameraDeviceUser ? gCameraDeviceUser : user;
+    
     if (gOriginalDataCbTimestamp) {
         gOriginalDataCbTimestamp(timestamp, msg_type, data, index, actual_user);
     }
@@ -385,35 +432,32 @@ static void camera2_release_recording_frame(struct camera_device * device,
     if(!device)
         return;
 
+    void* vendor_opaque = (void*)opaque;
+
     if (opaque) {
-        uint32_t *array = (uint32_t*)opaque;
-        if (array[0] == 3) { // kMetadataBufferTypeNativeHandleSource
-            native_handle_t* clone = *(native_handle_t**)(&array[1]);
-            if (clone) {
-                int index = clone->data[2];
-                int fd1 = -1;
-                int fd2 = -1;
-
-                if (index >= 0 && index < 16) {
-                    fd1 = gOriginalFds[index][0];
-                    fd2 = gOriginalFds[index][1];
+        std::lock_guard<std::mutex> lock(gMetadataMapLock);
+        auto it = gMetadataMap.find((void*)opaque);
+        if (it != gMetadataMap.end()) {
+            camera_memory_t* fw_mem = it->second.fw_mem;
+            vendor_opaque = it->second.vendor_opaque;
+            
+            uint32_t *fw_array = (uint32_t*)fw_mem->data;
+            if (fw_array[0] == 3) { // kMetadataBufferTypeNativeHandleSource
+                native_handle_t* clone = *(native_handle_t**)(&fw_array[1]);
+                if (clone) {
+                    native_handle_close(clone);
+                    native_handle_delete(clone);
                 }
-
-                // Reconstruct original vendor HAL metadata structure using original FDs
-                array[0] = 0; // kMetadataBufferTypeCameraSource
-                array[1] = fd1;
-                array[2] = fd2;
-                array[3] = index;
-                array[4] = 0;
-
-                // Close and delete the cloned handle (since HAL wrapper is responsible for it)
-                native_handle_close(clone);
-                native_handle_delete(clone);
             }
+            
+            // Release the framework-allocated memory
+            fw_mem->release(fw_mem);
+            
+            gMetadataMap.erase(it);
         }
     }
 
-    VENDOR_CALL(device, release_recording_frame, opaque);
+    VENDOR_CALL(device, release_recording_frame, vendor_opaque);
 }
 
 long long CancelAFTimeGuard = 0;
