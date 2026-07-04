@@ -1,0 +1,2 @@
+# Allow graphics driver to read a property
+get_prop(hal_graphics_allocator_default, graphics_config_prop)
