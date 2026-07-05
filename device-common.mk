@@ -112,6 +112,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.samsung
 
+# LiveDisplay
+ifeq ($(TARGET_HAVE_MDNIE),true)
+    # mDNIe
+    PRODUCT_PACKAGES += \
+        AdvancedDisplay \
+        vendor.lineage.livedisplay@2.0-service.samsung-exynos
+
+    # Overlay
+    DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/livedisplay/overlay-mdnie
+else
+    # Software-based SurfaceFlinger
+    DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/livedisplay/overlay
+endif
+
 # Media
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
