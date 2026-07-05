@@ -185,7 +185,4 @@
 
      <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
-
-    <!-- Enable software-based color transformation fallback in SurfaceFlinger -->
-    <bool name="config_setColorTransformAccelerated">true</bool>
 </resources>
