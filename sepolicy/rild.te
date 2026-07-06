@@ -68,7 +68,8 @@ allow rild sec_efs_file:file r_file_perms;
 set_prop(rild, net_radio_prop)
 set_prop(rild, vendor_radio_prop)
 
-# Allow rilld to read system files
+# Allow read APN databases
+allow rild system_data_file:dir search;
 allow rild system_data_file:file { open read };
 
 # /dev/alarm
