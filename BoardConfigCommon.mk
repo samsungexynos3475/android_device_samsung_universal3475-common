@@ -38,7 +38,7 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 TARGET_USES_64_BIT_BINDER := true
 
 # Bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/configs/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
