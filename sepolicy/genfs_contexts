@@ -89,6 +89,7 @@ genfscon sysfs /devices/virtual/camera              u:object_r:sysfs_camera:s0
 
 # GPS
 genfscon sysfs /devices/virtual/sec/gps             u:object_r:sysfs_gps:s0
+genfscon sysfs /devices/139c0000.pinctrl/gpio/gpio80 u:object_r:sysfs_gps:s0
 
 # Audio sysfs
 genfscon sysfs /devices/virtual/audio/earjack       u:object_r:sysfs_jack:s0
