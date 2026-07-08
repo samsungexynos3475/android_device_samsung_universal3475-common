@@ -53,3 +53,7 @@ allow gpsd hwservicemanager:binder call;
 allow gpsd hwservicemanager_prop:file { open read getattr};
 
 r_dir_file(hwservicemanager, gpsd)
+
+# Allow searching system_data_file for HAL init and silence default_prop denial
+allow gpsd system_data_file:dir search;
+dontaudit gpsd default_prop:file r_file_perms;
