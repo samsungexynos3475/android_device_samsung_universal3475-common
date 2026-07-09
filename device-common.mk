@@ -116,7 +116,7 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.samsung
 
 # LiveDisplay
-ifneq ($(filter j2lte j3xlte on5lte on5ltetmo, $(TARGET_DEVICE)),)
+ifneq ($(filter j2lte j3xlte on5lte on5ltetmo, $(subst lineage_,,$(TARGET_PRODUCT))),)
     # Software-based SurfaceFlinger
     DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/livedisplay/overlay
 else
