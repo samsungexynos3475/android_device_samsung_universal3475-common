@@ -54,12 +54,12 @@
 /sys/devices/system/cpu/cpufreq/interactive/io_is_busy              0660    system  system
 
 # Mali Device
-/sys/devices/11400000.mali  power_policy    0644    system  system
-/sys/devices/11400000.mali  dvfs_table      0644    radio   system
-/sys/devices/11400000.mali  dvfs_min_lock   0644    radio   system
-/sys/devices/11400000.mali  dvfs_max_lock   0644    radio   system
-/sys/devices/11400000.mali  highspeed_clock 0644    radio   system
-/sys/devices/11400000.mali  highspeed_load  0644    radio   system
+/sys/devices/11400000.mali  power_policy    0664    system  system
+/sys/devices/11400000.mali  dvfs_table      0664    radio   system
+/sys/devices/11400000.mali  dvfs_min_lock   0664    radio   system
+/sys/devices/11400000.mali  dvfs_max_lock   0664    radio   system
+/sys/devices/11400000.mali  highspeed_clock 0664    radio   system
+/sys/devices/11400000.mali  highspeed_load  0664    radio   system
 
 # USB OTG
 /sys/class/sec/switch       usb_state   0664    radio   system

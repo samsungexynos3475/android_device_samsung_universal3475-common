@@ -1,0 +1,354 @@
+{
+    "Nodes": [
+        {
+            "Name": "CPUClusterMaxFreq",
+            "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq",
+            "Values": [
+                "1495000",
+                "1196000",
+                "897000",
+                "507000"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUClusterMinFreq",
+            "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
+            "Values": [
+                "1495000",
+                "1105000",
+                "806000",
+                "507000",
+                "299000"
+            ],
+            "DefaultIndex": 4,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUHispeedFreq",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/hispeed_freq",
+            "Values": [
+                "1495000",
+                "1300000",
+                "897000",
+                "507000"
+            ],
+            "DefaultIndex": 2,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUTargetLoads",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/target_loads",
+            "Values": [
+                "60 897000:70 1300000:90",
+                "70 897000:80 1300000:95",
+                "85 507000:95",
+                "95"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUGoHispeedLoad",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load",
+            "Values": [
+                "60",
+                "75",
+                "85",
+                "99"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUAboveHispeedDelay",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay",
+            "Values": [
+                "20000",
+                "40000",
+                "80000"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUTimerRate",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/timer_rate",
+            "Values": [
+                "15000",
+                "20000",
+                "40000",
+                "60000"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUTimerSlack",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/timer_slack",
+            "Values": [
+                "20000",
+                "80000",
+                "300000"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUBoost",
+            "Path": "/sys/devices/system/cpu/cpufreq/interactive/boost",
+            "Values": [
+                "1",
+                "0"
+            ],
+            "DefaultIndex": 1,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "CPUGovernor",
+            "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
+            "Values": [
+                "interactive",
+                "powersave",
+                "conservative",
+                "performance"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUMaxFreq",
+            "Path": "/sys/devices/11400000.mali/dvfs_max_lock",
+            "Values": [
+                "0",
+                "667",
+                "533",
+                "350",
+                "266"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "GPUMinFreq",
+            "Path": "/sys/devices/11400000.mali/dvfs_min_lock",
+            "Values": [
+                "0",
+                "667",
+                "533",
+                "350",
+                "160"
+            ],
+            "DefaultIndex": 0,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "MIFMinFreq",
+            "Path": "/sys/class/devfreq/bus_mif/min_freq",
+            "Values": [
+                "666000",
+                "559000",
+                "413000",
+                "200000"
+            ],
+            "DefaultIndex": 3,
+            "ResetOnInit": true
+        },
+        {
+            "Name": "INTMinFreq",
+            "Path": "/sys/class/devfreq/bus_int/min_freq",
+            "Values": [
+                "334000",
+                "333000",
+                "275000"
+            ],
+            "DefaultIndex": 2,
+            "ResetOnInit": true
+        }
+    ],
+    "Actions": [
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUClusterMinFreq",
+            "Duration": 1500,
+            "Value": "806000"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUHispeedFreq",
+            "Duration": 1500,
+            "Value": "1300000"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUGoHispeedLoad",
+            "Duration": 1500,
+            "Value": "60"
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "CPUAboveHispeedDelay",
+            "Duration": 1500,
+            "Value": "20000"
+        },
+
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUClusterMinFreq",
+            "Duration": 5000,
+            "Value": "1495000"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUHispeedFreq",
+            "Duration": 5000,
+            "Value": "1495000"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUGoHispeedLoad",
+            "Duration": 5000,
+            "Value": "60"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "CPUBoost",
+            "Duration": 2000,
+            "Value": "1"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "GPUMinFreq",
+            "Duration": 5000,
+            "Value": "350"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "MIFMinFreq",
+            "Duration": 5000,
+            "Value": "666000"
+        },
+        {
+            "PowerHint": "LAUNCH",
+            "Node": "INTMinFreq",
+            "Duration": 5000,
+            "Value": "334000"
+        },
+
+        {
+            "PowerHint": "EXPENSIVE_RENDERING",
+            "Node": "GPUMinFreq",
+            "Duration": 0,
+            "Value": "533"
+        },
+        {
+            "PowerHint": "EXPENSIVE_RENDERING",
+            "Node": "MIFMinFreq",
+            "Duration": 0,
+            "Value": "559000"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "CPUClusterMaxFreq",
+            "Duration": 0,
+            "Value": "897000"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "CPUTimerSlack",
+            "Duration": 0,
+            "Value": "300000"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "GPUMaxFreq",
+            "Duration": 0,
+            "Value": "266"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "MIFMinFreq",
+            "Duration": 0,
+            "Value": "200000"
+        },
+        {
+            "PowerHint": "DISPLAY_INACTIVE",
+            "Node": "INTMinFreq",
+            "Duration": 0,
+            "Value": "275000"
+        },
+        {
+            "PowerHint": "DEVICE_IDLE",
+            "Node": "CPUClusterMaxFreq",
+            "Duration": 0,
+            "Value": "507000"
+        },
+        {
+            "PowerHint": "DEVICE_IDLE",
+            "Node": "CPUTimerRate",
+            "Duration": 0,
+            "Value": "60000"
+        },
+        {
+            "PowerHint": "DEVICE_IDLE",
+            "Node": "CPUTimerSlack",
+            "Duration": 0,
+            "Value": "300000"
+        },
+        {
+            "PowerHint": "DEVICE_IDLE",
+            "Node": "GPUMaxFreq",
+            "Duration": 0,
+            "Value": "266"
+        },
+        {
+            "PowerHint": "DEVICE_IDLE",
+            "Node": "INTMinFreq",
+            "Duration": 0,
+            "Value": "275000"
+        },
+        {
+            "PowerHint": "DEVICE_IDLE",
+            "Node": "MIFMinFreq",
+            "Duration": 0,
+            "Value": "200000"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "CPUClusterMaxFreq",
+            "Duration": 0,
+            "Value": "897000"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "CPUHispeedFreq",
+            "Duration": 0,
+            "Value": "897000"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "CPUTargetLoads",
+            "Duration": 0,
+            "Value": "85 507000:95"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "CPUGoHispeedLoad",
+            "Duration": 0,
+            "Value": "85"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "CPUTimerRate",
+            "Duration": 0,
+            "Value": "40000"
+        },
+        {
+            "PowerHint": "LOW_POWER",
+            "Node": "GPUMaxFreq",
+            "Duration": 0,
+            "Value": "350"
+        }
+    ]
+}
