@@ -157,7 +157,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.3-service.samsung-libperfmgr
+    android.hardware.power-service.samsung-libperfmgr
 
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -271,6 +271,9 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
 	$(COMMON_PATH) \
+    hardware/google/pixel \
+	hardware/google/interfaces \
+	hardware/samsung/aidl/power-libperfmgr \
 	hardware/samsung_slsi-linaro/exynos/cpboot
 
 # TextClassifier
