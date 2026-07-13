@@ -3,6 +3,9 @@ persist.bluetooth_fw_ver    u:object_r:bluetooth_prop:s0
 ro.bluetooth.tty            u:object_r:bluetooth_prop:s0
 wc_transport.               u:object_r:bluetooth_prop:s0
 
+# cbd
+vendor.cbd.                 u:object_r:cpboot-daemon_prop:s0
+
 # modemloader
 hw.revision            u:object_r:modemloader_prop:s0
 ro.cbd.dt_revision     u:object_r:modemloader_prop:s0
