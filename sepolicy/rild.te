@@ -71,3 +71,6 @@ allow rild system_data_file:file { open read };
 
 # /dev/alarm
 allow rild alarm_device:chr_file rw_file_perms;
+
+# Silence system_prop read denials
+dontaudit rild system_prop:file read;
