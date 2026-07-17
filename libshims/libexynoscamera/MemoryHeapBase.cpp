@@ -40,3 +40,27 @@ extern "C" void _ZN7android14MemoryHeapBaseC2Eijjj(
 {
     _ZN7android14MemoryHeapBaseC2Eijjl(thiz, fd, size, flags, static_cast<long>(offset));
 }
+
+/*
+ * Android 12 missing constructor shims for legacy camera blobs
+ * _ZN7android14MemoryHeapBaseC1Ejj (size, flags) -> proxy to _ZN7android14MemoryHeapBaseC1EjjPKc
+ * _ZN7android14MemoryHeapBaseC1Eij (fd, size) -> proxy to _ZN7android14MemoryHeapBaseC1Eijjl
+ */
+
+extern "C" void _ZN7android14MemoryHeapBaseC1EjjPKc(void* thiz, unsigned int size, unsigned int flags, const char* name);
+extern "C" void _ZN7android14MemoryHeapBaseC1Ejj(void* thiz, unsigned int size, unsigned int flags) {
+    _ZN7android14MemoryHeapBaseC1EjjPKc(thiz, size, flags, nullptr);
+}
+
+extern "C" void _ZN7android14MemoryHeapBaseC2EjjPKc(void* thiz, unsigned int size, unsigned int flags, const char* name);
+extern "C" void _ZN7android14MemoryHeapBaseC2Ejj(void* thiz, unsigned int size, unsigned int flags) {
+    _ZN7android14MemoryHeapBaseC2EjjPKc(thiz, size, flags, nullptr);
+}
+
+extern "C" void _ZN7android14MemoryHeapBaseC1Eij(void* thiz, int fd, unsigned int size) {
+    _ZN7android14MemoryHeapBaseC1Eijjl(thiz, fd, size, 0, 0);
+}
+
+extern "C" void _ZN7android14MemoryHeapBaseC2Eij(void* thiz, int fd, unsigned int size) {
+    _ZN7android14MemoryHeapBaseC2Eijjl(thiz, fd, size, 0, 0);
+}
