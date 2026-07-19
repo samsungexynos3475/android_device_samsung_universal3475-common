@@ -91,9 +91,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl \
-    libfimg \
-    libhwc2on1adapter \
-    libion
 
 # Health
 PRODUCT_PACKAGES += \
@@ -107,7 +104,6 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    keystore.exynos5 \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
 
@@ -223,6 +219,29 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SamsungDoze
 
+# Samsung Linaro BSP
+PRODUCT_PACKAGES += \
+    gralloc.universal3475 \
+    hwcomposer.universal3475 \
+    memtrack.universal3475 \
+    libcsc \
+    libfimg \
+    libhwc2on1adapter \
+    libstagefrighthw \
+    libion \
+    libExynosOMX_Core \
+    libExynosOMX_Resourcemanager \
+    libOMX.Exynos.AVC.Decoder \
+    libOMX.Exynos.AVC.Encoder \
+    libOMX.Exynos.HEVC.Decoder \
+    libOMX.Exynos.HEVC.Encoder \
+    libOMX.Exynos.MPEG4.Decoder \
+    libOMX.Exynos.MPEG4.Encoder \
+    libOMX.Exynos.VP8.Decoder \
+    libOMX.Exynos.VP8.Encoder \
+    libOMX.Exynos.VP9.Decoder \
+    libOMX.Exynos.WMV.Decoder
+
 # SEC
 PRODUCT_PACKAGES += \
     libsecnativefeature
@@ -291,10 +310,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/wifi/filter_ie:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/filter_ie \
     $(COMMON_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
-
-# call Samsung LSI board support package
-$(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
-$(call inherit-product, hardware/samsung_slsi/exynos3475/exynos3475.mk)
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/universal3475-common/universal3475-common-vendor.mk)
