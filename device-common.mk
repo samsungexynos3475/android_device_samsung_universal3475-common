@@ -146,12 +146,6 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl
 
-# Mobicore
-PRODUCT_PACKAGES += \
-    libMcClient \
-    libMcRegistry \
-    mcDriverDaemon
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.3-service.samsung-libperfmgr
