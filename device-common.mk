@@ -82,8 +82,8 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-    $(COMMON_PATH)/configs/gps/gps.xml:system/etc/gps.xml
+    $(COMMON_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+    $(COMMON_PATH)/configs/gps/gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/gps.xml
 
 # Graphics
 PRODUCT_PACKAGES += \
