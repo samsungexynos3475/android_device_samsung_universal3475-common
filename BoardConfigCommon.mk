@@ -151,6 +151,7 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 # SELinux
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Vendor separation
 TARGET_COPY_OUT_VENDOR := system/vendor
