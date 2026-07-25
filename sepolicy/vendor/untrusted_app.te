@@ -1,2 +1,5 @@
 dontaudit untrusted_app mediaserver_exec:file read;
 dontaudit untrusted_app selinuxfs:file read;
+
+# Silence proc_version reads from apps
+dontaudit untrusted_app proc_version:file read;
