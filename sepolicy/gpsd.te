@@ -64,3 +64,6 @@ allow gpsd toolbox_exec:file rx_file_perms;
 
 # Silence gpsd to access /data/data
 dontaudit gpsd system_data_file:dir search;
+
+# Allow gpsd to read radio_prop
+get_prop(gpsd, radio_prop)
