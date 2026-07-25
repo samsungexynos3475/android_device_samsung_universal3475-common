@@ -77,3 +77,9 @@ allow rild alarm_device:chr_file rw_file_perms;
 
 # Silence system_prop read denials
 dontaudit rild system_prop:file read;
+
+# Silence default_prop read denials
+dontaudit rild default_prop:file read;
+
+# Allow rild to read default_prop
+get_prop(rild, default_prop)
