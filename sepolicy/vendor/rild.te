@@ -65,7 +65,6 @@ allow rild sec_efs_file:dir search;
 allow rild sec_efs_file:file r_file_perms;
 
 # Allow rild to set net.rmnet/net.gprs DNS properties and radio properties
-set_prop(rild, net_radio_prop)
 set_prop(rild, vendor_radio_prop)
 
 # Allow read APN databases
@@ -77,3 +76,7 @@ allow rild alarm_device:chr_file rw_file_perms;
 
 # Silence system_prop read denials
 dontaudit rild system_prop:file read;
+
+# Allow rild to read and change vendor props
+get_prop(rild, vendor_default_prop)
+set_prop(rild, vendor_radio_prop)
