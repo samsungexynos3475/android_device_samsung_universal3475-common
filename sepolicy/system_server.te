@@ -61,3 +61,6 @@ unix_socket_connect(system_server, property, gpsd)
 
 # Allow system_server to access mediaserver
 allow system_server mediaserver_exec:file r_file_perms;
+
+# Allow system_server to getattr app and radio processes
+allow system_server { appdomain radio audioserver cameraserver surfaceflinger }:process getattr;
