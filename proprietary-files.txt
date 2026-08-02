@@ -30,7 +30,7 @@ lib/libwrappergps.so:vendor/lib/libwrappergps.so
 bin/mcDriverDaemon:vendor/bin/mcDriverDaemon
 lib/libMcClient.so:vendor/lib/libMcClient.so
 lib/libMcRegistry.so:vendor/lib/libMcRegistry.so
-vendor/app/FFFFFFFF000000000000000000000001.drbin
+vendor/app/FFFFFFFF000000000000000000000001.drbin:vendor/app/mcRegistry/FFFFFFFF000000000000000000000001.drbin
 vendor/app/mcRegistry/00060308060501020000000000000000.tlbin
 vendor/app/mcRegistry/07010000000000000000000000000000.tlbin
 vendor/app/mcRegistry/07060000000000000000000000000000.tlbin
