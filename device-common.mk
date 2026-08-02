@@ -43,7 +43,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl.3475 \
+    android.hardware.bluetooth@1.0-impl.universal3475 \
     android.hardware.bluetooth@1.0-service \
     libbt-vendor
 
