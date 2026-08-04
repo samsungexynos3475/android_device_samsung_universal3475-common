@@ -77,4 +77,21 @@ patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-fl26.so $BLOB_
 # Replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/gpsd
 
+# Patch libsec-ril/dsds.so libraries blobs for Scudo and Bionic compatibility
+# libsec-ril.so
+sed -i 's/_ZNSt12__node_alloc11_M_allocateERj/_ZZSt12__node_alloc11_M_allocateERj/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00realloc\x00/\x00zreallo\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_lock\x00/\x00zthread_mutex_lock\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_unlock\x00/\x00zthread_mutex_unlock\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_init\x00/\x00zthread_mutex_init\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_destroy\x00/\x00zthread_mutex_destroy\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+
+# libsec-ril-dsds.so
+sed -i 's/_ZNSt12__node_alloc11_M_allocateERj/_ZZSt12__node_alloc11_M_allocateERj/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00realloc\x00/\x00zreallo\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_lock\x00/\x00zthread_mutex_lock\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_unlock\x00/\x00zthread_mutex_unlock\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_init\x00/\x00zthread_mutex_init\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_destroy\x00/\x00zthread_mutex_destroy\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+
 "${MY_DIR}/setup-makefiles.sh"
