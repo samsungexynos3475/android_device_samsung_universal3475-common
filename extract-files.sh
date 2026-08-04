@@ -112,4 +112,7 @@ perl -pi -e 's/\x00pthread_mutex_destroy\x00/\x00zthread_mutex_destroy\x00/g' $B
 perl -pi -e 's/Could not dequeue gralloc buffer!/"\0" x 33/ge' $BLOB_ROOT/lib/libexynoscameraexternal.so
 perl -pi -e 's/previewThread: error, nativeFlushSurface/"\0" x 40/ge' $BLOB_ROOT/lib/libexynoscameraexternal.so
 
+# Change path of gps.conf on gpsd libraries to vendor
+sed -i "s|/system/etc/gps.conf|/vendor/etc/gps.conf|g" $BLOB_ROOT/bin/gpsd
+
 "${MY_DIR}/setup-makefiles.sh"
