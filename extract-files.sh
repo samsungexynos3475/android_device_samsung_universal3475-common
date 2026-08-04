@@ -78,6 +78,10 @@ patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-fl26.so $BLOB_
 perl -pi -e "s|/system/bin/gpsd|/vendor/bin/gpsd|g" $BLOB_ROOT/lib/libsec-ril.so
 perl -pi -e "s|/system/bin/gpsd|/vendor/bin/gpsd|g" $BLOB_ROOT/lib/libsec-ril-dsds.so
 
+# Change path of gpsd/gps.xml on gps.default libraries to vendor
+sed -i "s|/system/bin/gpsd|/vendor/bin/gpsd|g" $BLOB_ROOT/lib/hw/gps.default.so
+sed -i "s|/system/etc/gps.xml|/vendor/etc/gps.xml|g" $BLOB_ROOT/lib/hw/gps.default.so
+
 # Replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/gpsd
 
