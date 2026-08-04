@@ -77,4 +77,10 @@ patchelf --replace-needed libprotobuf-cpp-full.so libprotobuf-cpp-fl26.so $BLOB_
 # Replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/gpsd
 
+# Change libsec-ril/dsds libraries APN path from /data/data to /data/rild
+sed -i "s|/data/data/com.android.providers.telephony/databases|/data/rild/com.android.providers.telephony/databases|g" $BLOB_ROOT/lib/libsec-ril.so
+sed -i "s|/data/data/com.android.providers.telephony/databases|/data/rild/com.android.providers.telephony/databases|g" $BLOB_ROOT/lib/libsec-ril-dsds.so
+sed -i "s|/data/data/com.android.providers.telephony/shared_prefs|/data/rild/com.android.providers.telephony/shared_prefs|g" $BLOB_ROOT/lib/libsec-ril.so
+sed -i "s|/data/data/com.android.providers.telephony/shared_prefs|/data/rild/com.android.providers.telephony/shared_prefs|g" $BLOB_ROOT/lib/libsec-ril-dsds.so
+
 "${MY_DIR}/setup-makefiles.sh"
