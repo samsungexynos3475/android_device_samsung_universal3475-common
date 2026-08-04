@@ -97,4 +97,21 @@ sed -i "s|/system/etc/gps.xml|/vendor/etc/gps.xml|g" $BLOB_ROOT/lib/hw/gps.defau
 # Change path of gps.conf on gpsd libraries to vendor
 sed -i "s|/system/etc/gps.conf|/vendor/etc/gps.conf|g" $BLOB_ROOT/bin/gpsd
 
+# Patch libsec-ril/dsds.so libraries blobs for Scudo and Bionic compatibility
+# libsec-ril.so
+sed -i 's/_ZNSt12__node_alloc11_M_allocateERj/_ZZSt12__node_alloc11_M_allocateERj/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00realloc\x00/\x00zreallo\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_lock\x00/\x00zthread_mutex_lock\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_unlock\x00/\x00zthread_mutex_unlock\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_init\x00/\x00zthread_mutex_init\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+perl -pi -e 's/\x00pthread_mutex_destroy\x00/\x00zthread_mutex_destroy\x00/g' $BLOB_ROOT/lib/libsec-ril.so
+
+# libsec-ril-dsds.so
+sed -i 's/_ZNSt12__node_alloc11_M_allocateERj/_ZZSt12__node_alloc11_M_allocateERj/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00realloc\x00/\x00zreallo\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_lock\x00/\x00zthread_mutex_lock\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_unlock\x00/\x00zthread_mutex_unlock\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_init\x00/\x00zthread_mutex_init\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+perl -pi -e 's/\x00pthread_mutex_destroy\x00/\x00zthread_mutex_destroy\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
+
 "${MY_DIR}/setup-makefiles.sh"
