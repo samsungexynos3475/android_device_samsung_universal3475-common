@@ -91,4 +91,7 @@ sed -i "s|/data/data/com.android.providers.telephony/shared_prefs|/data/rild/com
 sed -i "s|/system/bin/gpsd|/vendor/bin/gpsd|g" $BLOB_ROOT/lib/hw/gps.default.so
 sed -i "s|/system/etc/gps.xml|/vendor/etc/gps.xml|g" $BLOB_ROOT/lib/hw/gps.default.so
 
+# Change path of gps.conf on gpsd libraries to vendor
+sed -i "s|/system/etc/gps.conf|/vendor/etc/gps.conf|g" $BLOB_ROOT/bin/gpsd
+
 "${MY_DIR}/setup-makefiles.sh"
