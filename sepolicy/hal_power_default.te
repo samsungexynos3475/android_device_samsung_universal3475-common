@@ -20,3 +20,4 @@ allow hal_power_default sysfs_graphics:file rw_file_perms;
 
 # Silence sys_ptrace denial (likely unnecessary for power HAL)
 dontaudit hal_power_default self:capability sys_ptrace;
+dontaudit hal_power_default self:capability dac_override;
