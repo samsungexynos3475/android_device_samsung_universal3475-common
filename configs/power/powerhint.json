@@ -169,25 +169,25 @@
     ],
     "Actions": [
         {
-            "PowerHint": "INTERACTION",
+            "PowerHint": "INTERACTIVE",
             "Node": "CPUClusterMinFreq",
             "Duration": 1500,
             "Value": "806000"
         },
         {
-            "PowerHint": "INTERACTION",
+            "PowerHint": "INTERACTIVE",
             "Node": "CPUHispeedFreq",
             "Duration": 1500,
             "Value": "1300000"
         },
         {
-            "PowerHint": "INTERACTION",
+            "PowerHint": "INTERACTIVE",
             "Node": "CPUGoHispeedLoad",
             "Duration": 1500,
             "Value": "60"
         },
         {
-            "PowerHint": "INTERACTION",
+            "PowerHint": "INTERACTIVE",
             "Node": "CPUAboveHispeedDelay",
             "Duration": 1500,
             "Value": "20000"
