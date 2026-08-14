@@ -84,11 +84,9 @@ perl -pi -e "s|/system/bin/gpsd|/vendor/bin/gpsd|g" $BLOB_ROOT/lib/libsec-ril-ds
 # Replace SSLv3_client_method with SSLv23_method
 sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BLOB_ROOT/vendor/bin/gpsd
 
-# Change libsec-ril/dsds libraries APN path from /data/data to /data/rild
-sed -i "s|/data/data/com.android.providers.telephony/databases|/data/rild/com.android.providers.telephony/databases|g" $BLOB_ROOT/lib/libsec-ril.so
-sed -i "s|/data/data/com.android.providers.telephony/databases|/data/rild/com.android.providers.telephony/databases|g" $BLOB_ROOT/lib/libsec-ril-dsds.so
-sed -i "s|/data/data/com.android.providers.telephony/shared_prefs|/data/rild/com.android.providers.telephony/shared_prefs|g" $BLOB_ROOT/lib/libsec-ril.so
-sed -i "s|/data/data/com.android.providers.telephony/shared_prefs|/data/rild/com.android.providers.telephony/shared_prefs|g" $BLOB_ROOT/lib/libsec-ril-dsds.so
+# Change libsec-ril/dsds path from /data/data to /data/rild
+sed -i "s|/data/data/|/data/rild/|g" $BLOB_ROOT/lib/libsec-ril.so
+sed -i "s|/data/data/|/data/rild/|g" $BLOB_ROOT/lib/libsec-ril-dsds.so
 
 # Change path of gpsd/gps.xml on gps.default libraries to vendor
 sed -i "s|/system/bin/gpsd|/vendor/bin/gpsd|g" $BLOB_ROOT/lib/hw/gps.default.so
