@@ -98,6 +98,9 @@ endif
 # Manifest
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 
+# Menfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # Network Routing
 TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
