@@ -783,7 +783,7 @@ on fs
 service gpsd /vendor/bin/gpsd -c /vendor/etc/gps.xml
     class main
     user gps
-    group system wakelock inet net_raw
+    group system radio wakelock inet net_raw
     ioprio be 0
 
 # Need to stop gnss before decryption because it hangs umount of data
