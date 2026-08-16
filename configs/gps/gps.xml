@@ -39,8 +39,8 @@
    />
 
   <gll
-       LogPriMask="LOG_INFO"
-       LogFacMask="LOG_GLLIO | LOG_RAWDATA | LOG_GLLAPI | LOG_NMEA"
+       LogPriMask="LOG_ERROR"
+       LogFacMask="LOG_GLLAPI"
        FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"
        RfType="GL_RF_47520_BRCM_EXT_LNA"
        WarmStandbyTimeout1Seconds="10"
