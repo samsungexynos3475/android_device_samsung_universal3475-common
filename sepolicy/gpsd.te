@@ -2,13 +2,15 @@ type gpsd, domain;
 type gpsd_exec, exec_type, file_type, vendor_file_type;
 
 init_daemon_domain(gpsd)
+wakelock_use(gpsd)
 
 # Automatically label files created in /data/system/gps as gps_data_file
 file_type_auto_trans(gpsd, system_data_file, gps_data_file)
 
 # Allow rild and netd to connect to gpsd
-unix_socket_connect(gpsd, property, rild)
-unix_socket_connect(gpsd, property, netd)
+unix_socket_connect(gpsd, rild, rild)
+unix_socket_connect(gpsd, dnsproxyd, netd)
+unix_socket_connect(gpsd, fwmarkd, netd)
 
 allow gpsd system_server:unix_stream_socket rw_socket_perms;
 
@@ -18,8 +20,6 @@ binder_use(gpsd)
 # Sockets
 type_transition gpsd gps_data_file:sock_file gps_socket;
 
-allow gpsd dnsproxyd_socket:sock_file write;
-allow gpsd fwmarkd_socket:sock_file write;
 allow gpsd gps_socket:sock_file create_file_perms;
 allow gpsd self:udp_socket create_socket_perms;
 
@@ -57,3 +57,7 @@ r_dir_file(hwservicemanager, gpsd)
 # Allow searching system_data_file for HAL init and silence default_prop denial
 allow gpsd system_data_file:dir search;
 dontaudit gpsd default_prop:file r_file_perms;
+
+# Allow gpsd to execute shell and toolbox
+allow gpsd shell_exec:file rx_file_perms;
+allow gpsd toolbox_exec:file rx_file_perms;
