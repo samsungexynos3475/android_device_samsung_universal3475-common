@@ -8,7 +8,7 @@
        GpioDelayMs="250"
        NvStorageDir="/data/system/gps/"
 
-       LogDirectory="/storage/emulated/0/gps/broadcom/storage"
+       LogDirectory="/data/system/gps/"
 
        LPmode="false"
        CpColdStart="false"
