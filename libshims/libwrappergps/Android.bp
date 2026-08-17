@@ -1,0 +1,10 @@
+cc_library_shared {
+    name: "libwrappergps_shim",
+    stem: "libwrappergps",
+
+    srcs: [
+        "WrapperGPS.cpp"
+    ],
+
+    vendor: true,
+}
