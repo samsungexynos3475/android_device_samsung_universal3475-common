@@ -269,7 +269,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcamera_client_shim \
     libexynoscamera_shim \
-    libstagefright_shim
+    libstagefright_shim \
+    libwrappergps_shim
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

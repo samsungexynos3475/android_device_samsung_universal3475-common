@@ -24,7 +24,6 @@ lib/egl/libGLES_mali.so:vendor/lib/egl/libGLES_mali.so
 bin/gps.cer:vendor/bin/gps.cer
 bin/gpsd:vendor/bin/gpsd
 lib/hw/gps.default.so:vendor/lib/hw/gps.universal3475.so
-lib/libwrappergps.so:vendor/lib/libwrappergps.so
 
 # Mobicore
 bin/mcDriverDaemon:vendor/bin/mcDriverDaemon
