@@ -39,6 +39,9 @@
 
 # Sensorhub IIO
 /dev/iio:device*          0660   system        system
+/dev/input/event*         0660   root       system
+/sys/class/input/input*   enable       0660   system     input
+/sys/class/input/input*   poll_delay   0660   system     input
 /sys/bus/iio/devices/iio:device*    *    0664   system     radio
 
 # Interactive Governor Tunables
