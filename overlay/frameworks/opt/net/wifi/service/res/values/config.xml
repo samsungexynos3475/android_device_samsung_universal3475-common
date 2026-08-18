@@ -25,4 +25,12 @@
 
     <!-- Enable WPA2 to WPA3 auto-upgrade -->
     <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
+
+    <!-- Array describing scanning schedule in seconds when device is connected and screen is on -->
+    <integer-array translatable="false" name="config_wifiConnectedScanIntervalScheduleSec">
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+        <item>600</item>
+    </integer-array>
 </resources>
