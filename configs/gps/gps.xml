@@ -10,7 +10,7 @@
 
        LogDirectory="/data/system/gps/"
 
-       LPmode="false"
+       LPmode="true"
        CpColdStart="false"
        CpGuardTimeSec="1"
        ReAidingOnHotStart="false"
@@ -43,8 +43,8 @@
        LogFacMask="LOG_GLLAPI"
        FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"
        RfType="GL_RF_47520_BRCM_EXT_LNA"
-       WarmStandbyTimeout1Seconds="10"
-       WarmStandbyTimeout2Seconds="15"
+       WarmStandbyTimeout1Seconds="5"
+       WarmStandbyTimeout2Seconds="8"
   >
   </gll>
 
