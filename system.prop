@@ -43,5 +43,8 @@ debug.stagefright.ccodec=0
 debug.stagefright.omx_default_rank=0
 debug.stagefright.omx_default_rank.sw-audio=1
 
+# Small battery
+ro.config.small_battery=true
+
 # USB
 persist.sys.usb.config=mtp
