@@ -165,7 +165,6 @@ lib/libfloatingfeature.so:vendor/lib/libfloatingfeature.so
 
 # Widevine
 lib/libstagefright_hdcp.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/liboemcrypto.so
 
 # Widevine - from angler (OPR6.170623.017)
