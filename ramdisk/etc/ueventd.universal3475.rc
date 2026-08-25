@@ -67,6 +67,9 @@
 /dev/memory_throughput    0660   system     system
 /dev/network_throughput   0660   system     system
 
+# TrustZone
+/dev/tzic                 0660   system     system
+
 # Interactive Governor Tunables
 /sys/devices/system/cpu/cpufreq/interactive/target_loads            0660    system  system
 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay     0660    system  system
