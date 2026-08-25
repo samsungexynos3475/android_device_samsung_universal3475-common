@@ -30,6 +30,12 @@
 /dev/video150             0660   cameraserver      cameraserver
 /dev/video152             0660   cameraserver      cameraserver
 
+# CPU frequency
+/dev/cpu_freq_max         0660   system     system
+/dev/cpu_freq_min         0660   system     system
+/dev/kfc_freq_max         0660   system     system
+/dev/kfc_freq_min         0660   system     system
+
 # jpeg
 /dev/m2m1shot_jpeg        0660   cameraserver      media
 
