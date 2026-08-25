@@ -35,6 +35,9 @@
 # Modem Interface
 /dev/block/platform/13540000.dwmmc0/by-name/RADIO     0660   system     radio
 /dev/alarm                0664   system     radio
+/dev/dun                  0660   system     radio
+/dev/multipdp             0660   system     radio
+/dev/smd4                 0660   system     radio
 /dev/umts*                0660   system     radio
 
 # Sensorhub IIO
