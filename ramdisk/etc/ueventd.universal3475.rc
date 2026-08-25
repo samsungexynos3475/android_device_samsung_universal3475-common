@@ -6,6 +6,7 @@
 /dev/v4l-subdev0          0660   system     camera
 
 # mscalers
+/dev/i2c-*                0660   system     system
 /dev/video50              0666   media      graphics
 /dev/video51              0666   media      graphics
 /dev/m2m1shot_scaler0     0666   cameraserver      graphics
