@@ -33,6 +33,10 @@
 # jpeg
 /dev/m2m1shot_jpeg        0660   cameraserver      media
 
+# Latency
+/dev/network_latency      0660   system     system
+/dev/cpu_dma_latency      0660   system     system
+
 # Modem Interface
 /dev/block/platform/13540000.dwmmc0/by-name/RADIO     0660   system     radio
 /dev/alarm                0664   system     radio
