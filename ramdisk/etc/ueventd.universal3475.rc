@@ -48,6 +48,15 @@
 /sys/class/input/input*   poll_delay   0660   system     input
 /sys/bus/iio/devices/iio:device*    *    0664   system     radio
 
+# Throughput
+/dev/bus_throughput       0660   system     system
+/dev/bus_throughput_max   0660   system     system
+/dev/cam_throughput       0660   system     system
+/dev/device_throughput    0660   system     system
+/dev/display_throughput   0660   system     system
+/dev/memory_throughput    0660   system     system
+/dev/network_throughput   0660   system     system
+
 # Interactive Governor Tunables
 /sys/devices/system/cpu/cpufreq/interactive/target_loads            0660    system  system
 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay     0660    system  system
