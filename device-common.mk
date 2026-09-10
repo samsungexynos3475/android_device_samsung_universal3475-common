@@ -326,7 +326,8 @@ PRODUCT_PACKAGES += \
     wifiloader \
     wifilogd \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+	TetheringOverlay
 
 # Wi-Fi Configs
 PRODUCT_COPY_FILES += \
