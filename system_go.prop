@@ -14,6 +14,3 @@ pm.dexopt.downgrade_after_inactive_days=10
 # doesn't take all of the RAM.
 dalvik.vm.heapgrowthlimit=128m
 dalvik.vm.heapsize=256m
-
-# madvise random in ART to reduce page cache thrashing.
-dalvik.vm.madvise-random=true
