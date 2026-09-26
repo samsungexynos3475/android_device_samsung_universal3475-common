@@ -8,3 +8,6 @@ allow hal_graphics_composer_default self:netlink_kobject_uevent_socket create_so
 # Allow graphics composer to access video devices (needed for camera preview on Exynos3475)
 allow hal_graphics_composer_default video_device:chr_file rw_file_perms;
 allow hal_graphics_composer_default video_device:dir search;
+
+# vndbinder
+vndbinder_use(hal_graphics_composer_default)
