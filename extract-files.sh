@@ -94,4 +94,8 @@ perl -pi -e 's/\x00pthread_mutex_unlock\x00/\x00zthread_mutex_unlock\x00/g' $BLO
 perl -pi -e 's/\x00pthread_mutex_init\x00/\x00zthread_mutex_init\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
 perl -pi -e 's/\x00pthread_mutex_destroy\x00/\x00zthread_mutex_destroy\x00/g' $BLOB_ROOT/lib/libsec-ril-dsds.so
 
+# Patch libexynoscameraexternal.so to silent errors
+perl -pi -e 's/Could not dequeue gralloc buffer!/"\0" x 33/ge' $BLOB_ROOT/lib/libexynoscameraexternal.so
+perl -pi -e 's/previewThread: error, nativeFlushSurface/"\0" x 40/ge' $BLOB_ROOT/lib/libexynoscameraexternal.so
+
 "${MY_DIR}/setup-makefiles.sh"
