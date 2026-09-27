@@ -9,3 +9,9 @@ type modemloader_prop, property_type;
 
 # mobicore (tee)
 type tee_prop, property_type;
+
+# RIL
+type vendor_radio_prop, property_type;
+
+# WiFi
+type vendor_wifi_prop, property_type;
