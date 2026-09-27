@@ -94,9 +94,6 @@ BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbhtoolExynos
 BOARD_USES_FULL_RECOVERY_IMAGE := false
 
-# Legacy BLOB Support
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += /system/vendor/bin/hw/rild=27
-
 # LiveDisplay (mDNIe)
 ifeq ($(TARGET_HAVE_MDNIE),true)
     DEVICE_MANIFEST_FILE += $(COMMON_PATH)/livedisplay/livedisplay_manifest.xml
