@@ -60,8 +60,8 @@ on post-fs-data
     mkdir /data/rild/com.android.providers.telephony 0771 radio radio
 
 on property:sys.boot_completed=1
-    # Symlink directories to access telephony.db and preferred-apn.xml required by cbd
-    symlink /data/user_de/0/com.android.providers.telephony/databases /data/rild/com.android.providers.telephony/databases
-    symlink /data/user_de/0/com.android.providers.telephony/shared_prefs /data/rild/com.android.providers.telephony/shared_prefs
-    restorecon /data/rild/com.android.providers.telephony/databases
-    restorecon /data/rild/com.android.providers.telephony/shared_prefs
+    # Bind mount directories to access telephony.db and preferred-apn.xml required by cbd
+    mkdir /data/rild/com.android.providers.telephony/databases 0771 radio radio
+    mkdir /data/rild/com.android.providers.telephony/shared_prefs 0771 radio radio
+    mount none /data/user_de/0/com.android.providers.telephony/databases /data/rild/com.android.providers.telephony/databases bind
+    mount none /data/user_de/0/com.android.providers.telephony/shared_prefs /data/rild/com.android.providers.telephony/shared_prefs bind
