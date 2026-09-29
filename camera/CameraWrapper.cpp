@@ -40,6 +40,7 @@ static int camera_set_torch_mode(const char* camera_id, bool enabled);
 android::Mutex gCameraWrapperLock;
 
 static camera_module_t *gVendorModule = 0;
+static const camera_module_callbacks_t *gCallbacks = NULL;
 
 static int check_vendor_module()
 {
@@ -123,6 +124,7 @@ static int camera_get_camera_info(int camera_id, struct camera_info *info)
 static int camera_set_callbacks(const camera_module_callbacks_t *callbacks)
 {
     ALOGV("%s", __FUNCTION__);
+    gCallbacks = callbacks;
     if (check_vendor_module())
         return 0;
     return gVendorModule->set_callbacks(callbacks);
@@ -170,6 +172,11 @@ static int camera_set_torch_mode(const char* camera_id, bool enabled)
     if (ret != 1) {
         ALOGE("%s: failed to write torch sysfs", __FUNCTION__);
         return -EIO;
+    }
+
+    if (gCallbacks && gCallbacks->torch_mode_status_change) {
+        gCallbacks->torch_mode_status_change(gCallbacks, camera_id,
+            enabled ? TORCH_MODE_STATUS_AVAILABLE_ON : TORCH_MODE_STATUS_AVAILABLE_OFF);
     }
 
     ALOGV("%s: torch %s", __FUNCTION__, enabled ? "ON" : "OFF");
