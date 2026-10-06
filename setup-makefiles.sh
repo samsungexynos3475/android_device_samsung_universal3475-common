@@ -37,7 +37,7 @@ source "${HELPER}"
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
 
 # Warning headers and guards
-write_headers "j1xlte j2lte on5ltetmo"
+write_headers "j1xlte j2lte j3xltexx on5ltetmo"
 
 write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
