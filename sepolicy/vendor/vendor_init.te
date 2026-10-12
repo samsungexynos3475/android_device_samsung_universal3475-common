@@ -4,3 +4,7 @@ allow vendor_init radio_data_file:lnk_file { create unlink rename };
 allow vendor_init radio_data_file:dir { create setattr search write add_name remove_name rmdir };
 
 set_prop(vendor_init, vendor_audio_prop)
+
+# For ro.ril.* properties
+set_prop(vendor_init, radio_prop)
+set_prop(vendor_init, vendor_radio_prop)
