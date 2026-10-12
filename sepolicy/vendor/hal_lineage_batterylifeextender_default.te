@@ -1,8 +1,0 @@
-# hal_lineage_batterylifeextender_default
-
-set_prop(hal_lineage_batterylifeextender_default, vendor_batterylifeextender_prop)
-
-allow hal_lineage_batterylifeextender_default sysfs_batteryinfo:dir search;
-allow hal_lineage_batterylifeextender_default sysfs_batteryinfo:file rw_file_perms;
-allow hal_lineage_batterylifeextender_default sysfs_usb_supply:dir search;
-allow hal_lineage_batterylifeextender_default sysfs_usb_supply:file rw_file_perms;
